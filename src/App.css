@@ -1,0 +1,249 @@
+/* ── Theme toggle ── */
+.theme-toggle {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text);
+  cursor: pointer;
+  transition: color 0.18s, border-color 0.18s, opacity 0.18s;
+  padding: 0;
+}
+
+.theme-toggle:hover {
+  color: var(--text-h);
+  border-color: var(--text-h);
+}
+
+/* ── Page shell ── */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 24px 64px;
+  position: relative;
+}
+
+/* Subtle paper grain overlay */
+.page::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 900;
+  opacity: 0.28;
+  transition: opacity 0.25s;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+[data-theme='dark'] .page::after {
+  opacity: 0.08;
+}
+
+/* ── Header ── */
+.site-header {
+  text-align: center;
+  margin-bottom: 30px;
+  animation: rise 0.6s ease both;
+}
+
+.logo-mark {
+  display: block;
+  margin-inline: auto;
+  margin-bottom: 10px;
+  color: var(--text-h);
+  opacity: 0.85;
+}
+
+.site-name {
+  font-family: var(--heading);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--text-h);
+  margin: 0 0 5px;
+  text-transform: lowercase;
+}
+
+.site-tagline {
+  font-family: var(--serif);
+  font-size: 0.975rem;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+
+/* ── Card ── */
+.card {
+  width: 100%;
+  max-width: 556px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  animation: rise 0.6s 0.06s ease both;
+}
+
+/* ── Rows ── */
+.row {
+  display: block;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  animation: rise 0.5s ease both;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.row-label {
+  position: absolute;
+  right: calc(100% + 18px);
+  top: 15px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text);
+  text-align: right;
+  white-space: nowrap;
+  line-height: 1;
+  user-select: none;
+}
+
+.row-content {
+  padding: 14px 20px;
+  font-size: 0.875rem;
+  line-height: 1.3;
+  font-weight: 300;
+}
+
+.row-content p {
+  margin: 0;
+}
+
+.row-content p + p {
+  margin-top: 6px;
+}
+
+.row-content ul {
+  margin: 6px 0 0;
+  padding-left: 14px;
+}
+
+.row-content li {
+  margin-bottom: 2px;
+}
+
+.row-content li::marker {
+  font-size: 0.7em;
+}
+
+.row-content em {
+  font-family: var(--serif);
+  font-size: 0.925rem;
+}
+
+/* ── Links ── */
+.text-link {
+  color: var(--text-h);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  transition: opacity 0.18s;
+}
+
+.text-link:hover {
+  opacity: 0.55;
+}
+
+/* ── Footer ── */
+.site-footer {
+  margin-top: 30px;
+  text-align: center;
+  animation: rise 0.6s 0.22s ease both;
+}
+
+.socials {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  margin-bottom: 14px;
+  font-size: 0.825rem;
+}
+
+.socials a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+
+.socials a:hover {
+  color: var(--text-h);
+}
+
+.footer-name {
+  font-family: var(--heading);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--text-h);
+  margin: 0;
+  text-transform: lowercase;
+}
+
+.footer-note {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin: 0;
+  line-height: 0;
+}
+
+/* ── Entrance animation ── */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .card,
+  .row,
+  .site-footer {
+    animation: none;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 520px) {
+  .page {
+    padding-left: 24px;
+  }
+
+  .row-label {
+    position: static;
+    display: block;
+    font-size: 0.82rem;
+    padding: 10px 16px 0;
+    text-align: left;
+  }
+
+  .row-content {
+    padding: 6px 16px 12px;
+  }
+}

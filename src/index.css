@@ -1,0 +1,33 @@
+:root {
+  --text: #666;
+  --text-h: #073642;
+  --bg: #fdf6e3;
+  --border: #eae8d8;
+
+  --sans: 'Geist', sans-serif;
+  --heading: 'Geist', sans-serif;
+  --serif: 'EB Garamond', serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 16px/155% var(--sans);
+  letter-spacing: 0.01em;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[data-theme='dark'] {
+  --text: #839496;
+  --text-h: #93a1a1;
+  --bg: #002b36;
+  --border: #073642;
+}
+
+body {
+  margin: 0;
+  transition: background 0.25s, color 0.25s;
+}
+
