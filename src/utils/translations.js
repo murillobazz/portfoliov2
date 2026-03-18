@@ -8,7 +8,7 @@ const t = {
     workMain: 'web developer @ moneri, since 2021',
     workItems: [
       'ux and ui design for new features',
-      'development and maintenance for a saas platform with more than 60k users, prioritizing performance and user experience',
+      'development and maintenance for a saas platform with more than 100k users, prioritizing performance and user experience',
       'coding stack: javascript, vue.js, nuxt.js',
     ],
     projectsLabel: 'projects',
