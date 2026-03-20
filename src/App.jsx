@@ -38,7 +38,7 @@ function App() {
 
         <Row label={tx.projectsLabel} delay={210}>
           <p>
-            <a href="#" className="text-link">behired</a>
+            <a href="https://bhired.vercel.app/" className="text-link">behired</a>
             {' '}{tx.projectsMain}
           </p>
           <ul>
