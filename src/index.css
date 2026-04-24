@@ -1,9 +1,12 @@
 :root {
-  --text: #666;
-  --text-h: #073642;
+  --text: #657b83;
+  --text-h: #393939;
   --bg: #fdf6e3;
+  --card-bg: #f0eada;
+  --card-bg-hover: #e6dece;
   --border: #eae8d8;
 
+  --display: 'Gasoek One', sans-serif;
   --sans: 'Geist', sans-serif;
   --heading: 'Geist', sans-serif;
   --serif: 'EB Garamond', serif;
@@ -23,6 +26,8 @@
   --text: #839496;
   --text-h: #93a1a1;
   --bg: #002b36;
+  --card-bg: #073642;
+  --card-bg-hover: #0d4452;
   --border: #073642;
 }
 

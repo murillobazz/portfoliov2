@@ -7,7 +7,7 @@ const t = {
     workLabel: 'work',
     workMain: 'web developer @ moneri, since 2021',
     workItems: [
-      'ux and ui design for new features',
+      'ux and ui design for new features with figma',
       'development and maintenance for a saas platform with more than 100k users, prioritizing performance and user experience',
       'coding stack: javascript, vue.js, nuxt.js',
     ],
@@ -46,7 +46,7 @@ const t = {
     workLabel: 'trabalho',
     workMain: 'desenvolvedor web @ moneri, desde 2021',
     workItems: [
-      'ux/ui design para novas features',
+      'ux/ui design para novas features com figma',
       'desenvolvimento e manutenção de uma plataforma saas com mais de 100k usuários, priorizando performance e experiência do usuário',
       'stack: javascript, vue.js, nuxt.js',
     ],
