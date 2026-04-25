@@ -2,20 +2,8 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { NavBar } from './NavBar';
 import { PageTitle } from './PageTitle';
-
-const TITLES = {
-  '/': 'murillobazz',
-  '/portfolio': 'portfolio',
-  '/about': 'about me',
-  '/contact': 'get in touch',
-};
-
-const TAB_LABELS = {
-  '/': 'HOME',
-  '/portfolio': 'PORTFOLIO',
-  '/about': 'ABOUT',
-  '/contact': 'CONTACT',
-};
+import { useLanguageContext } from '../context/LanguageContext';
+import t from '../utils/translations';
 
 function PageHeaderInner({ title, showNav }) {
   return (
@@ -28,8 +16,25 @@ function PageHeaderInner({ title, showNav }) {
 
 export function PageHeader() {
   const { pathname } = useLocation();
-  const title = TITLES[pathname] ?? 'murillobazz';
-  const tabLabel = TAB_LABELS[pathname];
+  const [lang] = useLanguageContext();
+  const tx = t[lang];
+
+  const titles = {
+    '/': 'murillobazz',
+    '/portfolio': tx.navPortfolio,
+    '/about': tx.navAbout,
+    '/contact': tx.navContact,
+  };
+
+  const tabLabels = {
+    '/': tx.tabHome,
+    '/portfolio': tx.tabPortfolio,
+    '/about': tx.tabAbout,
+    '/contact': tx.tabContact,
+  };
+
+  const title = titles[pathname] ?? 'murillobazz';
+  const tabLabel = tabLabels[pathname];
 
   useEffect(() => {
     document.title = tabLabel ? `${tabLabel} | murillobazz` : 'murillobazz';

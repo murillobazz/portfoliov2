@@ -4,7 +4,7 @@
   --bg: #fdf6e3;
   --card-bg: #f0eada;
   --card-bg-hover: #e6dece;
-  --border: #eae8d8;
+  --border: #657b83;
 
   --display: 'Gasoek One', sans-serif;
   --sans: 'Geist', sans-serif;
@@ -22,17 +22,52 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-[data-theme='dark'] {
-  --text: #839496;
-  --text-h: #93a1a1;
-  --bg: #002b36;
-  --card-bg: #073642;
-  --card-bg-hover: #0d4452;
-  --border: #073642;
+/* ── wine: deep red bg + golden yellow text ── */
+[data-scheme='wine'] {
+  --text: #f2d645;
+  --text-h: #ffe87a;
+  --bg: #6b0e0e;
+  --card-bg: #7d1010;
+  --card-bg-hover: #8f1515;
+  --border: #a01a1a;
+}
+
+/* ── midnight: deep navy + warm gold ── */
+[data-scheme='midnight'] {
+  --text: #c9a84c;
+  --text-h: #f0d080;
+  --bg: #0d1b2a;
+  --card-bg: #162232;
+  --card-bg-hover: #1e2e3e;
+  --border: #1e2e3e;
+}
+
+/* ── chalk: near-black + off-white ── */
+[data-scheme='chalk'] {
+  --text: #b0b0b0;
+  --text-h: #f0f0f0;
+  --bg: #161616;
+  --card-bg: #222222;
+  --card-bg-hover: #2c2c2c;
+  --border: #2c2c2c;
+}
+
+/* ── forest: dark green + sage ── */
+[data-scheme='forest'] {
+  --text: #8aab80;
+  --text-h: #cce8c0;
+  --bg: #1a2e1a;
+  --card-bg: #213221;
+  --card-bg-hover: #293e29;
+  --border: #293e29;
 }
 
 body {
   margin: 0;
   transition: background 0.25s, color 0.25s;
+}
+
+a {
+  color: var(--text);
 }
 

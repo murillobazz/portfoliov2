@@ -3,7 +3,10 @@ const t = {
     taglinePrefix: 'product-minded developer, ',
     taglineEm: 'creative tech enthusiast',
     aboutLabel: 'about',
-    about: "currently working as a web developer at moneri, in a fast-paced startup environment, where my responsibilities go from ui/ux feature conception to development. recently, i've been looking for collaborating on new challenging projects that push my skills further and allow me to contribute to meaningful solutions and/or in creative and innovative environments.",
+    about: [
+      "looking to collaborate on challenging projects that push my skills further and let me contribute to meaningful work in creative, innovative environments.",
+      "currently working as a web developer at moneri, in a fast-paced startup environment, where my responsibilities go from ui/ux feature conception to development.",
+    ],
     workLabel: 'work',
     workMain: 'web developer @ moneri, since 2021',
     workItems: [
@@ -12,15 +15,30 @@ const t = {
       'coding stack: javascript, vue.js, nuxt.js',
     ],
     projectsLabel: 'projects',
-    projectsMain: '— personal web app for job application management',
-    projectsItems: [
-      'local-first approach, using browser storage for performance and privacy',
-      'next.js, typescript, tailwindcss, shadcn/ui',
+    projects: [
+      {
+        name: 'Behired',
+        subtitle: 'personal web app for job application management',
+        details: [
+          'local-first approach, using browser storage for performance and privacy',
+          'next.js, typescript, tailwindcss, shadcn/ui',
+        ],
+        href: 'https://usebehired.vercel.app/',
+      },
+      {
+        name: 'Placeholder project',
+        subtitle: 'some brief description of the project',
+        details: [
+          'more description of what was done in this project',
+          'at last, the stack of tech and resources used for the project',
+        ],
+        href: null,
+      },
     ],
     studyLabel: 'study',
     studyItems: [
-      'postgraduate degree in ux design @ puc-rs (pontifical catholic university of rio grande do sul);',
-      'major degree in broadcast (social communication) @ ufrj (federal university of rio de janeiro)',
+      'postgraduate degree in ux design @ puc-rs (pontifícia universidade católica do rio grande do sul);',
+      'major degree in broadcast (social communication) @ ufrj (universidade federal do rio de janeiro)',
     ],
     whatsupLabel: "what's up",
     whatsupLines: [
@@ -35,14 +53,28 @@ const t = {
     quoteText: '\u201cdo the work, and just do the work. find the value in the work.\u201d',
     quoteAuthor: 'tom sachs',
     emailMe: 'email me',
+    emailMeCard: ['em', 'ail', 'me', ':)'],
+    emailCopiedCard: ['on', 'your', 'ctrl+v!'],
     cvLink: 'https://drive.google.com/file/d/1Cupa6SkIg_Al7ISM4Go34AxmuI5JOt4t/view?usp=sharing',
-    footerNote: 'currently on a minimalist phase',
+    footerNote: 'development + design + etc',
+    navHome: 'home',
+    navPortfolio: 'portfolio',
+    navAbout: 'about me',
+    navContact: 'get in touch',
+    navContactCard: ['get', 'in', 'tou', 'ch'],
+    tabHome: 'HOME',
+    tabPortfolio: 'PORTFOLIO',
+    tabAbout: 'ABOUT',
+    tabContact: 'CONTACT',
   },
   pt: {
     taglinePrefix: 'desenvolvedor orientado a produto, ',
     taglineEm: 'entusiasta de tecnologia criativa',
     aboutLabel: 'sobre',
-    about: "atualmente trabalhando como desenvolvedor web na moneri, em um ambiente de startup acelerado, onde minhas responsabilidades vão da concepção de features de ui/ux ao desenvolvimento. recentemente, tenho buscado colaborar em novos projetos desafiadores que ampliem minhas habilidades e me permitam contribuir com soluções significativas e/ou em ambientes criativos e inovadores.",
+    about: [
+      "buscando projetos desafiadores que ajudem a ampliar minhas habilidades e me permitam contribuir com trabalho significativo em ambientes criativos e inovadores.",
+      "atualmente trabalhando como desenvolvedor web na moneri, em um ambiente de startup acelerado, onde minhas responsabilidades vão da concepção de features de ui/ux ao desenvolvimento.",
+    ],
     workLabel: 'trabalho',
     workMain: 'desenvolvedor web @ moneri, desde 2021',
     workItems: [
@@ -51,10 +83,25 @@ const t = {
       'stack: javascript, vue.js, nuxt.js',
     ],
     projectsLabel: 'projetos',
-    projectsMain: '— app web pessoal para gerenciamento de candidaturas',
-    projectsItems: [
-      'abordagem local-first, usando local storage do browser para performance e privacidade',
-      'next.js, typescript, tailwindcss, shadcn/ui',
+    projects: [
+      {
+        name: 'Behired',
+        subtitle: 'app web pessoal para gerenciamento de candidaturas',
+        details: [
+          'abordagem local-first, usando local storage do browser para performance e privacidade',
+          'next.js, typescript, tailwindcss, shadcn/ui',
+        ],
+        href: 'https://usebehired.vercel.app/',
+      },
+      {
+        name: 'Placeholder project',
+        subtitle: 'some brief description of the project',
+        details: [
+          'more description of what was done in this project',
+          'at last, the stack of tech and resources used for the project',
+        ],
+        href: null,
+      },
     ],
     studyLabel: 'formação',
     studyItems: [
@@ -74,8 +121,19 @@ const t = {
     quoteText: '\u201cdo the work, and just do the work. find the value in the work.\u201d',
     quoteAuthor: 'tom sachs',
     emailMe: 'email',
+    emailMeCard: ['em', 'ail', ':)'],
+    emailCopiedCard: ['tá', 'no seu', 'ctrl+v!'],
     cvLink: 'https://drive.google.com/file/d/1cwOV7gKRww6bEW-hZxVxTWJF5WdWFPL0/view?usp=sharing',
-    footerNote: 'atualmente em uma fase minimalista',
+    footerNote: 'desenvolvimento + design + etc',
+    navHome: 'início',
+    navPortfolio: 'portfólio',
+    navAbout: 'sobre mim',
+    navContact: 'contato',
+    navContactCard: ['con', 'ta', 'to'],
+    tabHome: 'INÍCIO',
+    tabPortfolio: 'PORTFÓLIO',
+    tabAbout: 'SOBRE',
+    tabContact: 'CONTATO',
   },
 }
 

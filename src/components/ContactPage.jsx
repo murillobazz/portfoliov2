@@ -1,9 +1,18 @@
+import { useState } from 'react';
 import { useLanguageContext } from '../context/LanguageContext';
 import t from '../utils/translations';
 
 export function ContactPage() {
   const [lang] = useLanguageContext();
   const tx = t[lang];
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('murillobazilio@gmail.com').then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
 
   return (
     <div className="contact">
@@ -42,18 +51,23 @@ export function ContactPage() {
           >
             <span className="contact-card-label">resum&eacute;</span>
           </a>
-          <a
+          <button
             className="contact-card contact-card--email"
             style={{ flex: 277 }}
-            href="mailto:murillobazilio@gmail.com"
+            onClick={handleCopyEmail}
+            aria-label="Copy email address"
           >
-            <span className="contact-card-label">em<br />ail<br />me<br />:)</span>
-          </a>
+          <span className="contact-card-label">
+            {(copied ? tx.emailCopiedCard : tx.emailMeCard).map((chunk, i, arr) => (
+                <span key={i}>{chunk}{i < arr.length - 1 && <br />}</span>
+              ))}
+          </span>
+          </button>
         </div>
       </div>
 
       <p className="contact-tagline">
-        product-minded developer, creative tech enthusiast
+        {tx.taglinePrefix}<em>{tx.taglineEm}</em>
       </p>
     </div>
   );

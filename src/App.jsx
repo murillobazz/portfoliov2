@@ -7,11 +7,11 @@ import { HomePage } from './components/HomePage';
 import { PageHeader } from './components/PageHeader';
 import { PortfolioPage } from './components/PortfolioPage';
 import { LanguageContext } from './context/LanguageContext';
-import { useDarkMode } from './hooks/useDarkMode';
+import { useColorScheme } from './hooks/useColorScheme';
 import { useLanguage } from './hooks/useLanguage';
 
 function App() {
-  const [dark, setDark] = useDarkMode();
+  const [scheme, cycleScheme] = useColorScheme();
   const [lang, setLang] = useLanguage();
 
   return (
@@ -27,8 +27,8 @@ function App() {
         </Routes>
       </main>
       <Footer
-        dark={dark}
-        onDarkToggle={() => setDark(d => !d)}
+        scheme={scheme}
+        onSchemeToggle={cycleScheme}
         lang={lang}
         onLangToggle={() => setLang(l => l === 'en' ? 'pt' : 'en')}
       />

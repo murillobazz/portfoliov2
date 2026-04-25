@@ -1,3 +1,6 @@
+import { useLanguageContext } from '../context/LanguageContext';
+import t from '../utils/translations';
+
 function FolderIcon() {
   return (
     <svg
@@ -15,38 +18,12 @@ function FolderIcon() {
   );
 }
 
-const projects = [
-  {
-    name: 'Behired',
-    subtitle: 'personal web app for job application management',
-    details: [
-      'local-first approach, using browser storage for performance and privacy',
-      'next.js, typescript, tailwindcss, shadcn/ui',
-    ],
-    href: 'https://bhired.vercel.app/',
-    first: true,
-  },
-  {
-    name: 'Placeholder project',
-    subtitle: 'some brief description of the project',
-    details: [
-      'more description of what was done in this project',
-      'at last, the stack of tech and resources used for the project',
-    ],
-    href: null,
-  },
-  {
-    name: 'Placeholder project',
-    subtitle: 'some brief description of the project',
-    details: [
-      'more description of what was done in this project',
-      'at last, the stack of tech and resources used for the project',
-    ],
-    href: null,
-  },
-];
-
 export function PortfolioPage() {
+  const [lang] = useLanguageContext();
+  const tx = t[lang];
+
+  const projects = tx.projects.map((p, i) => ({ ...p, first: i === 0 }));
+
   return (
     <div className="portfolio">
 
