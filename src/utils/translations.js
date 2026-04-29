@@ -18,12 +18,30 @@ const t = {
     projects: [
       {
         name: 'Behired',
+        slug: 'behired',
         subtitle: 'personal web app for job application management',
         details: [
           'local-first approach, using browser storage for performance and privacy',
           'next.js, typescript, tailwindcss, shadcn/ui',
         ],
         href: 'https://usebehired.vercel.app/',
+        page: {
+          description: [
+            'Behired is a personal web-based application for professionals to keep track of their job applications.',
+            'The application works with a local-first approach: all the data used in the application goes in the browser storage for user privacy and it is a PWA, so the user can utilize it as an app on their mobile device.',
+            [
+              { t: 'It was designed in ' },
+              { t: 'figma', b: true },
+              { t: ' and developed with ' },
+              { t: 'next.js, typescript, tailwindcss, shadcn-ui', b: true },
+              { t: ' and a few other libraries.' },
+            ],
+            'The user can also export and import their data in json and share it between devices.',
+          ],
+          accessLabel: 'access Behired →',
+          mockup: 'behired',
+          accent: '#3a5a40',
+        },
       },
       {
         name: 'Placeholder project',
@@ -66,6 +84,7 @@ const t = {
     tabPortfolio: 'PORTFOLIO',
     tabAbout: 'ABOUT',
     tabContact: 'CONTACT',
+    projectPageBack: '← back to portfolio',
   },
   pt: {
     taglinePrefix: 'desenvolvedor orientado a produto, ',
@@ -86,12 +105,30 @@ const t = {
     projects: [
       {
         name: 'Behired',
+        slug: 'behired',
         subtitle: 'app web pessoal para gerenciamento de candidaturas',
         details: [
           'abordagem local-first, usando local storage do browser para performance e privacidade',
           'next.js, typescript, tailwindcss, shadcn/ui',
         ],
         href: 'https://usebehired.vercel.app/',
+        page: {
+          description: [
+            'Behired é uma aplicação web pessoal para profissionais acompanharem suas candidaturas de emprego.',
+            'A aplicação funciona com uma abordagem local-first: todos os dados usados ficam no armazenamento do browser para privacidade do usuário, e é uma PWA, então o usuário pode utilizá-la como app em seu dispositivo móvel.',
+            [
+              { t: 'Foi desenhada no ' },
+              { t: 'figma', b: true },
+              { t: ' e desenvolvida com ' },
+              { t: 'next.js, typescript, tailwindcss, shadcn-ui', b: true },
+              { t: ' e algumas outras bibliotecas.' },
+            ],
+            'O usuário também pode exportar e importar seus dados em json e compartilhá-los entre dispositivos.',
+          ],
+          accessLabel: 'acessar Behired →',
+          mockup: 'behired',
+          accent: '#3a5a40',
+        },
       },
       {
         name: 'Placeholder project',
@@ -134,6 +171,7 @@ const t = {
     tabPortfolio: 'PORTFÓLIO',
     tabAbout: 'SOBRE',
     tabContact: 'CONTATO',
+    projectPageBack: '← voltar ao portfólio',
   },
 }
 

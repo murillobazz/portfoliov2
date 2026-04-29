@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useLanguageContext } from '../context/LanguageContext';
 import t from '../utils/translations';
-import { PongCard } from './PongCard';
+import { PongCard } from '../components/PongCard';
 
 export function HomePage() {
   const navigate = useNavigate();

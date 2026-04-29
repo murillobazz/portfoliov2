@@ -1,11 +1,7 @@
-import { Route, Routes } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import './App.css';
-import { AboutPage } from './components/AboutPage';
-import { ContactPage } from './components/ContactPage';
 import { Footer } from './components/Footer';
-import { HomePage } from './components/HomePage';
 import { PageHeader } from './components/PageHeader';
-import { PortfolioPage } from './components/PortfolioPage';
 import { LanguageContext } from './context/LanguageContext';
 import { useColorScheme } from './hooks/useColorScheme';
 import { useLanguage } from './hooks/useLanguage';
@@ -19,12 +15,7 @@ function App() {
     <div className="page">
       <PageHeader />
       <main className="page-content">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
+        <Outlet />
       </main>
       <Footer
         scheme={scheme}

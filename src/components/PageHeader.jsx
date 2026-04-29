@@ -19,6 +19,9 @@ export function PageHeader() {
   const [lang] = useLanguageContext();
   const tx = t[lang];
 
+  const isProjectPage = pathname.startsWith('/portfolio/') && pathname.length > '/portfolio/'.length;
+  if (isProjectPage) return null;
+
   const titles = {
     '/': 'murillobazz',
     '/portfolio': tx.navPortfolio,
