@@ -20,7 +20,6 @@ export function PageHeader() {
   const tx = t[lang];
 
   const isProjectPage = pathname.startsWith('/portfolio/') && pathname.length > '/portfolio/'.length;
-  if (isProjectPage) return null;
 
   const titles = {
     '/': 'murillobazz',
@@ -40,8 +39,11 @@ export function PageHeader() {
   const tabLabel = tabLabels[pathname];
 
   useEffect(() => {
+    if (isProjectPage) return;
     document.title = tabLabel ? `${tabLabel} | murillobazz` : 'murillobazz';
-  }, [tabLabel]);
+  }, [isProjectPage, tabLabel]);
+
+  if (isProjectPage) return null;
 
   return <PageHeaderInner key={pathname} title={title} showNav={pathname !== '/'} />;
 }

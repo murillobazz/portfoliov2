@@ -1,6 +1,13 @@
 import { useLanguageContext } from '../context/LanguageContext';
 import t from '../utils/translations';
 
+function renderSegments(item) {
+  if (!Array.isArray(item)) return item;
+  return item.map((seg, i) =>
+    seg.b ? <strong key={i}>{seg.t}</strong> : <span key={i}>{seg.t}</span>
+  );
+}
+
 function withMoneriLink(text) {
   const parts = text.split('moneri');
   return parts.map((part, i) =>
@@ -36,7 +43,7 @@ export function AboutPage() {
           <span className="about-col-label">{tx.workLabel}</span>
           <p className="about-col-main">{withMoneriLink(tx.workMain)}</p>
           <ul className="about-col-list">
-            {tx.workItems.map((item, i) => <span key={i}>{item}</span>)}
+            {tx.workItems.map((item, i) => <span key={i}>{renderSegments(item)}</span>)}
           </ul>
         </section>
 

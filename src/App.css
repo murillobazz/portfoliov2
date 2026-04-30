@@ -533,7 +533,7 @@
 .project-page {
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
   gap: 40px;
   align-items: start;
   container-type: inline-size;
@@ -547,6 +547,9 @@
   background: var(--card-bg);
   padding: 12px 16px 16px 12px;
   box-sizing: border-box;
+  position: sticky;
+  top: 32px;
+  align-self: start;
 }
 
 .project-page-back {
@@ -564,7 +567,7 @@
 
 .project-page-title {
   font-family: var(--display);
-  font-size: clamp(40px, 7cqw, 80px);
+  font-size: clamp(24px, 5.5cqw, 80px);
   font-weight: 400;
   color: var(--text-h);
   margin: 0;
@@ -605,12 +608,25 @@
   color: var(--text-h);
 }
 
-/* ── Mockup ── */
+/* ── Mockup / Gallery ── */
 .project-page-right {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   animation: rise 0.85s cubic-bezier(0.25, 1, 0.4, 1) both;
+}
+
+.project-page-right--gallery {
+  flex-direction: column;
+  gap: 3rem;
+  animation: none;
+}
+
+.project-page-gallery-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
 }
 
 .project-page-mockup {
@@ -621,7 +637,7 @@
 
 .project-page-accent {
   position: absolute;
-  background: var(--project-accent, #3a5a40);
+  background: var(--text);
   width: 92%;
   top: 16%;
   bottom: 18%;
@@ -645,6 +661,11 @@
 
   .project-page-right {
     padding-top: 0;
+  }
+
+  .project-page-left {
+    position: static;
+    padding: 12px;
   }
 }
 
@@ -688,7 +709,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-bottom: 80px;
   animation: rise 0.85s cubic-bezier(0.25, 1, 0.4, 1) both;
   container-type: inline-size;
 }
@@ -760,24 +780,14 @@
   gap: 4px;
 }
 
-.about-col-list li {
+.about-col-list span {
   font-family: var(--sans);
-  font-size: clamp(14px, 1.2cqw, 20px);
+  font-size: clamp(14px, 1.4cqw, 20px);
   font-weight: 300;
   color: var(--text);
   line-height: 1.45;
   padding-left: 10px;
   position: relative;
-}
-
-.about-col-list li::before {
-  content: '—';
-  position: absolute;
-  left: 0;
-  transform: scaleX(0.6);
-  transform-origin: left;
-  color: var(--text);
-  opacity: 0.5;
 }
 
 /* ── What's up ── */
@@ -824,7 +834,7 @@
 
 .about-whatsup-text {
   font-family: var(--sans);
-  font-size: clamp(0.8rem, 1.5cqw, 1rem);
+  font-size: clamp(14px, 1.4cqw, 20px);
   font-weight: 300;
   color: var(--text-h);
   line-height: 1.4;
@@ -844,20 +854,6 @@
   position: relative;
   overflow: hidden;
   animation: rise 0.85s cubic-bezier(0.25, 1, 0.4, 1) 0.55s both;
-}
-
-.about-quote::before {
-  content: '\201C';
-  font-family: var(--serif);
-  font-size: clamp(120px, 22cqw, 280px);
-  line-height: 0.75;
-  color: var(--bg);
-  opacity: 0.08;
-  position: absolute;
-  top: 10px;
-  left: 12px;
-  pointer-events: none;
-  user-select: none;
 }
 
 .about-quote-text {

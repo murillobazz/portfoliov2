@@ -49,7 +49,7 @@ export function ContactPage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="contact-card-label">resum&eacute;</span>
+            <span className="contact-card-label">{tx.resumeLabel}</span>
           </a>
           <button
             className="contact-card contact-card--email"

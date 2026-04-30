@@ -1,11 +1,6 @@
 import { Navigate, Link, useParams } from 'react-router-dom';
-import behiredMockup from '../assets/behired-mockup.png';
 import { useLanguageContext } from '../context/LanguageContext';
 import t from '../utils/translations';
-
-const MOCKUP_IMAGES = {
-  behired: behiredMockup,
-};
 
 export function ProjectPage() {
   const { slug } = useParams();
@@ -17,7 +12,8 @@ export function ProjectPage() {
   if (!project?.page) return <Navigate to="/portfolio" replace />;
 
   const { page } = project;
-  const mockupSrc = page.mockup ? MOCKUP_IMAGES[page.mockup] : null;
+  const mockupSrc = page.mockup ?? null;
+  const images = page.images ?? [];
 
   return (
     <div className="project-page">
@@ -60,15 +56,35 @@ export function ProjectPage() {
         <div className="project-page-right">
           <div
             className="project-page-mockup"
-            style={{ '--project-accent': page.accent }}
           >
             <div className="project-page-accent" />
             <img
               src={mockupSrc}
               alt={`${project.name} mockup`}
               className="project-page-mockup-img"
+              width="560"
+              height="auto"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
             />
           </div>
+        </div>
+      )}
+
+      {images.length > 0 && (
+        <div className="project-page-right project-page-right--gallery">
+          {images.map((src, i) => (
+            <img
+              key={src}
+              src={src}
+              alt={`${project.name} – screenshot ${i + 1}`}
+              className="project-page-gallery-img"
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+              fetchpriority={i === 0 ? 'high' : 'auto'}
+            />
+          ))}
         </div>
       )}
     </div>
