@@ -79,6 +79,34 @@ const t = {
           ],
         },
       },
+      {
+        name: 'Public sector admission notices aggregator',
+        slug: 'project-3',
+        subtitle: 'web scraping pipeline for public sector admission notices with automated WordPress drafts',
+        details: [
+          'node.js scraper with cheerio, optimized for low compute cost',
+          'scheduled runs on trigger.dev with logs and automatic retries',
+        ],
+        page: {
+          mockup: 'https://media.licdn.com/dms/image/v2/D4D22AQE1rqzI-SEtBQ/feedshare-shrink_2048_1536/B4DZ0m87c5J4Ag-/0/1774474999986?e=1779321600&v=beta&t=eSzpeU-9asIU-uLE9XkDWFxBxDG4Sl7jwHgIR1Qijw4',
+          description: [
+            'Web scraping application for aggregating public sector admission notices in a back-office environment.',
+            'The pipeline processes sources with heterogeneous HTML structures, applying site-specific extraction rules.',
+            'Extraction was implemented in Node.js with Cheerio, prioritizing raw HTML parsing performance and low infrastructure cost.',
+            'In production, the scraper runs without dependencies on paid inference API calls.',
+            'Each execution automatically publishes a draft through the WordPress API, ready for review and posting.',
+            [
+              { t: 'Automation stack: ' },
+              { t: 'Node.js + Cheerio', b: true },
+              { t: ' for scraping; ' },
+              { t: 'WordPress API', b: true },
+              { t: ' for draft creation; ' },
+              { t: 'Trigger.dev', b: true },
+              { t: ' for scheduling, logs, and retries (running comfortably on the free tier).' },
+            ],
+          ],
+        },
+      },
     ],
     studyLabel: 'study',
     studyItems: [
@@ -90,6 +118,7 @@ const t = {
       'studying system design and what not;',
       'rocking copilot and opencode with sonnet 4.6;',
       'getting back on some creative coding with p5.js and more;',
+      'cooking up new easter eggs for this website;',
       'replaying pokémon fire red for the 100th time and ff7 for the 1st;',
       'trying to improve my cooking skills (tired of the basic stuff);',
       'awed and amazed by the amount of stuff to learn, just how life goes.',
@@ -160,7 +189,7 @@ const t = {
       },
       {
         name: 'Triagem automática de startups com IA',
-        slug: 'startup-application-automation',
+        slug: 'project-2',
         subtitle: 'automação com IA para triagem de startups em programa de aceleração',
         details: [
           'automação end-to-end: landing page, google forms, n8n, crm no notion',
@@ -194,6 +223,34 @@ const t = {
           ],
         },
       },
+      {
+        name: 'Agregador de editais públicos',
+        slug: 'project-3',
+        subtitle: 'pipeline de web scraping de editais com criação automática de rascunhos no WordPress',
+        details: [
+          'scraper em node.js com cheerio, otimizado para baixo custo de máquina',
+          'agendamentos no trigger.dev com logs e retries automáticos',
+        ],
+        page: {
+          mockup: 'https://media.licdn.com/dms/image/v2/D4D22AQE1rqzI-SEtBQ/feedshare-shrink_2048_1536/B4DZ0m87c5J4Ag-/0/1774474999986?e=1779321600&v=beta&t=eSzpeU-9asIU-uLE9XkDWFxBxDG4Sl7jwHgIR1Qijw4',
+          description: [
+            'Aplicação de web scraping para agregação de editais públicos em um ambiente de back-office.',
+            'O pipeline processa fontes com estruturas HTML heterogêneas, aplicando regras de extração específicas por site.',
+            'A extração foi implementada em Node.js com Cheerio, priorizando desempenho no parse de HTML bruto e baixo custo de infraestrutura.',
+            'Em produção, o scraper executa sem dependência de chamadas de API paga para inferência.',
+            'Cada execução publica automaticamente um rascunho via API do WordPress, pronto para revisão e postagem.',
+            [
+              { t: 'Stack de automação: ' },
+              { t: 'Node.js + Cheerio', b: true },
+              { t: ' para scraping; ' },
+              { t: 'API do WordPress', b: true },
+              { t: ' para criação de rascunhos; ' },
+              { t: 'Trigger.dev', b: true },
+              { t: ' para agendamento, logs e retries (rodando de boa no free tier).' },
+            ],
+          ],
+        },
+      }
     ],
     studyLabel: 'formação',
     studyItems: [
@@ -205,6 +262,7 @@ const t = {
       'estudando system design e afins;',
       'usando copilot e opencode com sonnet 4.6;',
       'voltando a fazer creative coding com p5.js e mais;',
+      'cozinhando novos easter eggs para esse site;',
       'rejogando pokémon fire red pela 100ª vez e ff7 pela 1ª;',
       'tentando melhorar minhas habilidades na cozinha (cansado do básico);',
       'maravilhado e assombrado com o tanto que há para aprender, isso é a vida.',

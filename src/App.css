@@ -535,7 +535,6 @@
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
   gap: 40px;
-  align-items: start;
   container-type: inline-size;
   padding-top: 32px;
 }
@@ -567,7 +566,7 @@
 
 .project-page-title {
   font-family: var(--display);
-  font-size: clamp(24px, 5.5cqw, 80px);
+  font-size: clamp(24px, 5.5cqw, 48px);
   font-weight: 400;
   color: var(--text-h);
   margin: 0;
@@ -611,7 +610,7 @@
 /* ── Mockup / Gallery ── */
 .project-page-right {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   animation: rise 0.85s cubic-bezier(0.25, 1, 0.4, 1) both;
 }
