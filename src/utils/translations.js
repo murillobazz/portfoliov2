@@ -90,7 +90,9 @@ const t = {
           'scheduled runs on trigger.dev with logs and automatic retries',
         ],
         page: {
-          mockup: 'https://media.licdn.com/dms/image/v2/D4D22AQE1rqzI-SEtBQ/feedshare-shrink_2048_1536/B4DZ0m87c5J4Ag-/0/1774474999986?e=1779321600&v=beta&t=eSzpeU-9asIU-uLE9XkDWFxBxDG4Sl7jwHgIR1Qijw4',
+          images: [
+            "/automation-image-1.png"
+          ],
           description: [
             'Web scraping application for aggregating public sector admission notices in a back-office environment.',
             'The pipeline processes sources with heterogeneous HTML structures, applying site-specific extraction rules.',
