@@ -4,8 +4,9 @@ const t = {
     taglineEm: 'creative tech enthusiast',
     aboutLabel: 'about',
     about: [
-      "looking to collaborate as a design engineer on challenging projects that push my skills further and let me contribute to meaningful work in creative, innovative environments.",
-      "currently working as a frontend developer at moneri, in a fast-paced startup environment, where my responsibilities go from the ui/ux feature conception to development.",
+      // "looking to collaborate as a design engineer on challenging projects that push my skills further and let me contribute to meaningful work in creative, innovative environments.",
+      "looking to collaborate on challenging projects that push my skills further and let me contribute to meaningful work in innovative environments.",
+      "currently working as a frontend developer at moneri, in a fast-paced startup environment, where my responsibilities go from the ui/ux feature conception to web development and AI solutions.",
     ],
     workLabel: 'work',
     workMain: 'frontend developer @ moneri, since 2021',
@@ -13,6 +14,7 @@ const t = {
       'acting as a design engineer to be the bridge between design and development to ensure smooth implementation of features;',
       'ux and ui design for new features with figma;',
       'development and maintenance for a saas platform with more than 100k users, prioritizing performance and user experience;',
+      'automated n1 user support on the platform through agentic AI with n8n and Claude API;',
       'coding stack: javascript, vue.js, nuxt.js.',
     ],
     projectsLabel: 'projects',
@@ -148,8 +150,9 @@ const t = {
     taglineEm: 'entusiasta de tecnologia criativa',
     aboutLabel: 'sobre',
     about: [
-      "buscando atuar como design engineer em projetos desafiadores que ajudem a ampliar minhas habilidades e me permitam contribuir com trabalho significativo em ambientes criativos e inovadores.",
-      "atualmente trabalhando como desenvolvedor frontend na moneri, em um ambiente de startup acelerado, onde minhas responsabilidades vão da concepção de features em ui/ux ao desenvolvimento.",
+      // "buscando atuar como design engineer em projetos desafiadores que ajudem a ampliar minhas habilidades e me permitam contribuir com trabalho significativo em ambientes criativos e inovadores.",
+      "buscando atuar em projetos desafiadores que ajudem a ampliar minhas habilidades e me permitam contribuir com trabalho significativo em ambientes inovadores.",
+      "atualmente trabalhando como desenvolvedor frontend na moneri, em um ambiente de startup acelerado, onde minhas responsabilidades vão da concepção de features em ui/ux ao desenvolvimento web e de soluções de IA.",
     ],
     workLabel: 'trabalho',
     workMain: 'desenvolvedor frontend @ moneri, desde 2021',
@@ -157,6 +160,7 @@ const t = {
       'atuando como design engineer para ser a ponte entre design e desenvolvimento, garantindo o pipeline de implementação das features;',
       'ux/ui design para novas features com figma;',
       'desenvolvimento e manutenção de uma plataforma saas com mais de 100k usuários, priorizando performance e experiência do usuário;',
+      'suporte automatizado de n1 para usuários da plataforma através de agentes de IA com n8n e Claude API;',
       'stack: javascript, vue.js, nuxt.js.',
     ],
     projectsLabel: 'projetos',
@@ -232,7 +236,9 @@ const t = {
           'agendamentos no trigger.dev com logs e retries automáticos',
         ],
         page: {
-          mockup: 'https://media.licdn.com/dms/image/v2/D4D22AQE1rqzI-SEtBQ/feedshare-shrink_2048_1536/B4DZ0m87c5J4Ag-/0/1774474999986?e=1779321600&v=beta&t=eSzpeU-9asIU-uLE9XkDWFxBxDG4Sl7jwHgIR1Qijw4',
+          images: [
+            "/automation-image-1.png"
+          ],
           description: [
             'Aplicação de web scraping para agregação de editais públicos em um ambiente de back-office.',
             'O pipeline processa fontes com estruturas HTML heterogêneas, aplicando regras de extração específicas por site.',
