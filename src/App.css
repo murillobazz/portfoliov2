@@ -66,7 +66,8 @@
   align-items: center;
   width: 100%;
   min-height: 100dvh;
-  max-width: 1800px;
+  /* capped at the content width, so the title is never wider than what's below it */
+  max-width: calc(1200px + 48px);
   margin: 0 auto;
   padding: 0 24px;
   position: relative;
@@ -221,6 +222,21 @@
   overflow: visible;
 }
 
+/* Stretch on scroll (--stretch is set by PageTitle): the box gets shorter while
+   the letters grow upward from their base, past the top of the screen */
+.page-header .page-title {
+  position: relative;
+  height: calc(18cqw * (1 - 0.4 * var(--stretch, 0)));
+}
+
+.page-header .page-title svg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: scaleY(calc(1 + 0.4 * var(--stretch, 0)));
+  transform-origin: 50% 100%;
+}
+
 /* ── Tagline ── */
 .home-tagline {
   font-family: var(--sans);
@@ -259,11 +275,6 @@
   transform: scale(1.012);
 }
 
-.home-card--portfolio {
-  grid-column: 1 / -1;
-  justify-content: center;
-}
-
 .home-card--about {
   justify-content: center;
 }
@@ -273,7 +284,10 @@
 }
 
 .home-card--pong {
-  grid-column: 1 / -1;
+  justify-content: center;
+}
+
+.home-card--playground {
   justify-content: center;
 }
 
@@ -298,8 +312,8 @@
   text-align: center;
 }
 
-.home-card--portfolio .home-card-label {
-  font-size: clamp(28px, 5vw, 64px);
+.home-card--playground .home-card-label {
+  font-size: clamp(24px, 3.4vw, 44px);
 }
 
 .home-card--about .home-card-label {
@@ -334,11 +348,6 @@
 
   .home-card {
     min-height: 120px;
-  }
-
-  .home-card--portfolio {
-    grid-column: 1;
-    justify-content: center;
   }
 
   .home-card--about {
@@ -543,28 +552,7 @@
   }
 }
 
-/* ── Project page ── */
-.project-page {
-  width: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
-  gap: 40px;
-  container-type: inline-size;
-  padding-top: 32px;
-}
-
-.project-page-left {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  background: var(--card-bg);
-  padding: 12px 16px 16px 12px;
-  box-sizing: border-box;
-  position: sticky;
-  top: 32px;
-  align-self: start;
-}
-
+/* ── Project page (shared links) ── */
 .project-page-back {
   font-family: var(--sans);
   font-size: clamp(0.85rem, 1.2cqw, 1rem);
@@ -578,38 +566,6 @@
   color: var(--text-h);
 }
 
-.project-page-title {
-  font-family: var(--display);
-  font-size: clamp(24px, 5.5cqw, 48px);
-  font-weight: 400;
-  color: var(--text-h);
-  margin: 0;
-  line-height: 1;
-}
-
-.project-page-description {
-  display: flex;
-  flex-direction: column;
-}
-
-.project-page-description p {
-  font-family: var(--sans);
-  font-size: clamp(0.85rem, 1.3cqw, 1.05rem);
-  font-weight: 400;
-  color: var(--text-h);
-  line-height: 1.55;
-  margin: 0 0 1em;
-  text-align: justify;
-}
-
-.project-page-description p:last-child {
-  margin-bottom: 0;
-}
-
-.project-page-description strong {
-  font-weight: 700;
-}
-
 .project-page-link {
   color: var(--text);
   text-decoration: underline;
@@ -621,71 +577,7 @@
   color: var(--text-h);
 }
 
-/* ── Mockup / Gallery ── */
-.project-page-right {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: rise 0.85s cubic-bezier(0.25, 1, 0.4, 1) both;
-}
-
-.project-page-right--gallery {
-  flex-direction: column;
-  gap: 3rem;
-  animation: none;
-}
-
-.project-page-gallery-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 2px;
-}
-
-.project-page-mockup {
-  position: relative;
-  width: 100%;
-  max-width: 560px;
-}
-
-.project-page-accent {
-  position: absolute;
-  background: var(--text);
-  width: 92%;
-  top: 16%;
-  bottom: 18%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 0;
-}
-
-.project-page-mockup-img {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  display: block;
-}
-
-@media (max-width: 720px) {
-  .project-page {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .project-page-right {
-    padding-top: 0;
-  }
-
-  .project-page-left {
-    position: static;
-    padding: 12px;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .project-page-right {
-    animation: none;
-  }
   ::view-transition-group(*) {
     animation-duration: 0.01ms !important;
   }
@@ -718,6 +610,10 @@
 
 /* ── About page ── */
 .about {
+  /* Two text sizes: body, and a smaller one for the details. Labels are set
+     in the title's font and don't count */
+  --about-body: clamp(16px, 1.6cqw, 19px);
+  --about-small: clamp(14px, 1.3cqw, 16px);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -729,9 +625,8 @@
 /* ── Lead bio ── */
 .about-bio {
   font-family: var(--sans);
-  font-style: italic;
-  font-size: clamp(1.1rem, 2.4cqw, 1.5rem);
-  line-height: 1.1;
+  font-size: var(--about-body, clamp(16px, 1.6cqw, 19px));
+  line-height: 1.45;
   color: var(--text-h);
   margin: 0;
   padding: 12px;
@@ -741,8 +636,17 @@
   animation: rise 0.85s cubic-bezier(0.25, 1, 0.4, 1) 0.15s both;
 }
 
-.about-bio:nth-child(2) {
+.about-bio p {
+  margin: 0 0 12px;
+}
+
+.about-bio p:last-child {
+  margin-bottom: 0;
+}
+
+.about strong {
   font-weight: 600;
+  color: var(--text-h);
 }
 
 /* ── Work + Study columns ── */
@@ -763,21 +667,19 @@
   gap: 6px;
 }
 
+/* Section labels: the title's font and casing, just smaller */
 .about-col-label {
   font-family: var(--display);
-  font-size: clamp(14px, 1.4cqw, 20px);
-  color: var(--text);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  font-size: clamp(20px, 2.2cqw, 28px);
+  color: var(--text-h);
   line-height: 1;
   display: block;
-  margin-bottom: 8px;
-  opacity: 0.7;
+  margin-bottom: 14px;
 }
 
 .about-col-main {
   font-family: var(--sans);
-  font-size: clamp(14px, 1.4cqw, 20px);
+  font-size: var(--about-body);
   font-weight: 400;
   color: var(--text-h);
   margin: 0 0 4px;
@@ -793,14 +695,21 @@
   gap: 4px;
 }
 
-.about-col-list span {
+/* The details under the role: smaller and quieter, with a bold lead-in */
+.about-col-list li {
   font-family: var(--sans);
-  font-size: clamp(14px, 1.4cqw, 20px);
-  font-weight: 300;
+  font-size: var(--about-small);
+  font-weight: 400;
   color: var(--text);
   line-height: 1.45;
-  padding-left: 10px;
+  padding-left: 14px;
   position: relative;
+}
+
+.about-col-list li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
 }
 
 /* ── What's up ── */
@@ -816,7 +725,7 @@
 .about-whatsup-list {
   list-style: none;
   padding: 0;
-  margin: 14px 0 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -847,10 +756,10 @@
 
 .about-whatsup-text {
   font-family: var(--sans);
-  font-size: clamp(14px, 1.4cqw, 20px);
-  font-weight: 300;
+  font-size: var(--about-body);
+  font-weight: 400;
   color: var(--text-h);
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 /* ── Quote ── */
@@ -872,7 +781,7 @@
 .about-quote-text {
   font-family: var(--serif);
   font-style: italic;
-  font-size: clamp(0.95rem, 2cqw, 1.35rem);
+  font-size: var(--about-body);
   color: var(--bg);
   line-height: 1.5;
   margin: 0;
@@ -884,9 +793,8 @@
 
 .about-quote-cite {
   font-family: var(--display);
-  font-size: clamp(12px, 1.6cqw, 18px);
+  font-size: var(--about-small);
   color: var(--bg);
-  opacity: 0.6;
   font-style: normal;
   letter-spacing: 0.05em;
   padding-bottom: 32px;
@@ -1341,5 +1249,637 @@
   .pg-pair--fail,
   .pg-stamp--fine {
     animation: none;
+  }
+}
+
+/* ── Case study page ── */
+.case {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 24px;
+  container-type: inline-size;
+  animation: rise 0.85s cubic-bezier(0.25, 1, 0.4, 1) both;
+}
+
+.case-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--card-bg);
+  padding: 12px 16px 20px 12px;
+}
+
+.case-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin: 8px 0 0;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text);
+  text-transform: lowercase;
+}
+
+.case-status {
+  color: var(--bg);
+  background: var(--text);
+  padding: 0 6px;
+}
+
+.case-title {
+  font-family: var(--display);
+  font-size: clamp(30px, 6cqw, 72px);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--text-h);
+  margin: 0;
+  max-width: 22ch;
+}
+
+.case-subtitle {
+  font-family: var(--sans);
+  font-size: clamp(1rem, 1.8cqw, 1.3rem);
+  font-weight: 300;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ── Figures ── */
+.case-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.case-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  outline: 1px solid var(--border);
+  outline-offset: -1px;
+}
+
+.case-figure--narrow {
+  align-self: center;
+  width: min(100%, 360px);
+}
+
+.case-figure figcaption {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+.case-figure--todo {
+  min-height: 160px;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  border: 2px dashed var(--text);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--text);
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* ── TL;DR ── */
+.case-tldr {
+  background: var(--card-bg);
+  padding: 12px 16px 16px 12px;
+}
+
+.case-tldr dl {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.case-tldr-row {
+  display: grid;
+  grid-template-columns: 9ch 1fr;
+  gap: 16px;
+  padding: 8px 0;
+  border-top: 1px solid color-mix(in srgb, var(--text) 25%, transparent);
+}
+
+.case-tldr-row:first-child {
+  border-top: none;
+}
+
+.case-tldr dt {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text);
+  text-transform: lowercase;
+  padding-top: 3px;
+}
+
+.case-tldr dd {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: clamp(0.95rem, 1.4cqw, 1.05rem);
+  color: var(--text-h);
+  line-height: 1.5;
+}
+
+/* ── Body ── */
+.case-body {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px 12px;
+}
+
+.case-section {
+  max-width: 72ch;
+}
+
+.case-heading {
+  font-family: var(--display);
+  font-size: clamp(22px, 3cqw, 34px);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--text-h);
+  margin: 0 0 14px;
+}
+
+.case-section p,
+.case-list,
+.case-callout p {
+  font-family: var(--sans);
+  font-size: clamp(1rem, 1.4cqw, 1.1rem);
+  line-height: 1.6;
+  color: var(--text-h);
+  margin: 0 0 1em;
+}
+
+.case-section p:last-child {
+  margin-bottom: 0;
+}
+
+.case-list {
+  padding-left: 1.2em;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.case-body code,
+.case-tldr code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  background: var(--card-bg);
+  padding: 1px 4px;
+}
+
+.case-body a,
+.case-tldr a {
+  color: var(--text-h);
+  text-underline-offset: 3px;
+}
+
+.case-callout {
+  max-width: 72ch;
+  margin: 0;
+  padding: 4px 0 4px 20px;
+  border-left: 3px solid #f2c200;
+}
+
+.case-callout p {
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 2cqw, 1.45rem);
+  font-style: italic;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ── Stats ── */
+.case-section:has(.case-stats) {
+  max-width: none;
+}
+
+.case-stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.case-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 12px;
+  background: var(--card-bg);
+}
+
+.case-stat-value {
+  font-family: var(--display);
+  font-size: clamp(32px, 5cqw, 56px);
+  line-height: 1;
+  color: var(--text-h);
+  font-variant-numeric: tabular-nums;
+}
+
+.case-stat-label {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+/* ── Next case ── */
+.case-next {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 16px 24px 12px;
+  background: var(--card-bg);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.case-next:hover {
+  background: var(--card-bg-hover);
+}
+
+.case-next-title {
+  font-family: var(--display);
+  font-size: clamp(24px, 4.5cqw, 52px);
+  line-height: 1;
+  color: var(--text-h);
+}
+
+@media (max-width: 720px) {
+  .case-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .case-tldr-row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .case-body {
+    padding: 24px 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case {
+    animation: none;
+  }
+}
+
+/* ── Tagline: minding the gap ── */
+.gap {
+  font: inherit;
+  font-style: italic;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: baseline;
+  position: relative;
+}
+
+.gap:focus-visible {
+  outline: 1px dashed var(--text-h);
+  outline-offset: 4px;
+}
+
+.gap-door {
+  display: inline-block;
+}
+
+.gap-door--left {
+  margin-right: 0.28em;
+}
+
+/* The gap opens by growing a grid track from 0fr to 1fr: real width, no measuring */
+.gap-reveal {
+  display: inline-grid;
+  grid-template-columns: 0fr;
+  transition: grid-template-columns 450ms cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+
+.gap-reveal-clip {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.gap-reveal-text {
+  display: inline-block;
+  white-space: nowrap;
+  margin-right: 0.28em;
+  padding: 0 0.45em 3px;
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 0.85em;
+  color: var(--text-h);
+  background: linear-gradient(#f2c200, #f2c200) bottom / 100% 3px no-repeat;
+}
+
+.gap--open .gap-reveal,
+.gap:focus-visible .gap-reveal {
+  grid-template-columns: 1fr;
+}
+
+@media (hover: hover) {
+  .gap:hover .gap-reveal {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hint: the doors twitch like they can't quite close, and the chime plays */
+.gap-notes {
+  position: relative;
+  width: 0;
+  display: inline-block;
+}
+
+.gap-note {
+  position: absolute;
+  bottom: 0.9em;
+  font-family: var(--serif);
+  font-style: normal;
+  font-size: 0.9em;
+  color: var(--text-h);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gap-note--1 { left: -0.5em; }
+.gap-note--2 { left: 0.25em; bottom: 0.6em; }
+
+.gap--hint .gap-door--left  { animation: gap-door-left 4s ease-in-out 2s infinite; }
+.gap--hint .gap-door--right { animation: gap-door-right 4s ease-in-out 2s infinite; }
+.gap--hint .gap-note--1     { animation: gap-note 4s ease-out 2s infinite; }
+.gap--hint .gap-note--2     { animation: gap-note 4s ease-out 2.4s infinite; }
+
+@keyframes gap-door-left {
+  0%, 30%, 100% { transform: translateX(0); }
+  6%  { transform: translateX(-4px); }
+  12% { transform: translateX(0); }
+  18% { transform: translateX(-3px); }
+  24% { transform: translateX(0); }
+}
+
+@keyframes gap-door-right {
+  0%, 30%, 100% { transform: translateX(0); }
+  6%  { transform: translateX(4px); }
+  12% { transform: translateX(0); }
+  18% { transform: translateX(3px); }
+  24% { transform: translateX(0); }
+}
+
+@keyframes gap-note {
+  0%, 100% { opacity: 0; transform: translateY(0); }
+  4%  { opacity: 1; transform: translateY(-2px); }
+  14% { opacity: 0; transform: translateY(-8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gap-reveal {
+    transition: none;
+  }
+
+  .gap--hint .gap-door--left,
+  .gap--hint .gap-door--right,
+  .gap--hint .gap-note--1,
+  .gap--hint .gap-note--2 {
+    animation: none;
+  }
+}
+
+/* ── Phone screens side by side ── */
+.case-phones {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 260px));
+  justify-content: center;
+  gap: clamp(10px, 3cqw, 32px);
+  padding: clamp(16px, 4cqw, 40px);
+  background: var(--card-bg);
+}
+
+.case-phones img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  outline: 1px solid var(--border);
+  outline-offset: -1px;
+}
+
+/* ── Folders (work card + work page) ── */
+.folder {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.folder-symbol {
+  color: var(--card-bg);
+  fill: currentColor;
+}
+
+/* ── Home: work card with one folder per case ── */
+/* The label centers in the space left of the folders */
+.home-card--work {
+  grid-column: 1 / -1;
+  justify-content: center;
+  padding-right: calc(min(36%, 360px) + 3%);
+}
+
+.home-card--work .home-card-label {
+  font-size: clamp(28px, 5vw, 64px);
+}
+
+/* Folders line up diagonally down to the right, each one in front of the one
+   to its left. The first case is the one in front, bottom right; the others
+   trail off behind it, higher, smaller and closer to the card color */
+.home-folders {
+  position: absolute;
+  top: 0;
+  right: 3%;
+  bottom: 0;
+  width: min(36%, 360px);
+}
+
+.home-folder {
+  position: absolute;
+  --depth: var(--i); /* 0 = front, the first case */
+  z-index: calc(var(--n) - var(--i));
+  width: 40%;
+  left: calc((var(--n) - 1 - var(--i)) * 25%);
+  bottom: calc(18% + var(--depth) * 7%); /* line centered on the label */
+  /* a notch darker than --text, and fading less with depth, so the symbols keep their contrast */
+  --folder: color-mix(in srgb, var(--text) 75%, var(--text-h));
+  color: color-mix(in srgb, var(--folder) calc(100% - var(--depth) * 12%), var(--card-bg));
+  scale: calc(1 - var(--depth) * 0.1);
+  transform-origin: 50% 100%;
+  transition: color 0.15s;
+}
+
+/* The link never moves, so its hover area stays put while the body slides out
+   (moving the link itself left the cursor behind and made it flicker) */
+.home-folder-body {
+  position: relative;
+  display: block;
+  transition:
+    translate 0.35s cubic-bezier(0.3, 1.4, 0.5, 1),
+    rotate 0.35s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+
+.home-folder .folder {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(-4px 2px 6px color-mix(in srgb, var(--text-h) 30%, transparent));
+}
+
+/* Pulled out of the pile: to the side, a little tilted, in front of the others.
+   Hover only where hover exists, so a tap doesn't leave a folder stuck out */
+.home-folder:focus-visible {
+  z-index: calc(var(--n) + 1);
+  color: var(--text-h);
+}
+
+.home-folder:focus-visible .home-folder-body {
+  translate: -34% 14%;
+  rotate: -6deg;
+}
+
+@media (hover: hover) {
+  .home-folder:hover {
+    z-index: calc(var(--n) + 1);
+    color: var(--text-h);
+  }
+
+  .home-folder:hover .home-folder-body {
+    translate: -34% 14%;
+    rotate: -6deg;
+  }
+
+  .home-folder:hover .home-folder-tag {
+    opacity: 1;
+    scale: 1;
+    translate: calc((var(--j) - 1) * 14px) calc(-240% - var(--j) * 100%);
+    rotate: calc((var(--j) - 1) * 4deg);
+  }
+}
+
+.home-folder:focus-visible {
+  outline: none;
+}
+
+.home-folder:focus-visible .folder {
+  outline: 1px dashed var(--text-h);
+  outline-offset: 4px;
+}
+
+/* The case keywords live inside the folder, behind its front */
+.home-folder-tags {
+  position: absolute;
+  z-index: 0;
+  top: 18%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.home-folder-tag {
+  position: absolute;
+  padding: 3px 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--text-h);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  /* hidden at rest: the longer tags are wider than the folder */
+  opacity: 0;
+  scale: 0.6;
+  transition:
+    translate 0.35s cubic-bezier(0.3, 1.4, 0.5, 1),
+    rotate 0.35s cubic-bezier(0.3, 1.4, 0.5, 1),
+    scale 0.35s cubic-bezier(0.3, 1.4, 0.5, 1),
+    opacity 0.12s;
+  transition-delay: calc(var(--j) * 40ms);
+}
+
+/* ...and slide up out of it, fanned, one after another */
+.home-folder:focus-visible .home-folder-tag {
+  opacity: 1;
+  scale: 1;
+  translate: calc((var(--j) - 1) * 14px) calc(-240% - var(--j) * 100%);
+  rotate: calc((var(--j) - 1) * 4deg);
+}
+
+/* ── Work page: the case preview peeks out of the folder ── */
+@media (min-width: 481px) {
+  .project-folder {
+    position: relative;
+  }
+}
+
+.project-folder-icon {
+  position: relative;
+  z-index: 1;
+}
+
+.project-folder-preview {
+  position: absolute;
+  z-index: 0;
+  right: 14%;
+  bottom: 42%;
+  width: 66%;
+  height: 70%;
+  object-fit: cover;
+  object-position: top left;
+  border: 1px solid var(--border);
+  transform: rotate(-4deg);
+  transform-origin: bottom center;
+  transition: transform 0.3s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+
+.project-card:hover .project-folder-preview {
+  transform: translateY(-14px) rotate(-7deg);
+}
+
+@media (max-width: 600px) {
+  .home-card--work {
+    padding-right: 50%;
+  }
+
+  .home-folders {
+    width: 48%;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-folder-preview {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-folder,
+  .home-folder-body,
+  .home-folder-tag,
+  .project-folder-preview {
+    transition: none;
   }
 }

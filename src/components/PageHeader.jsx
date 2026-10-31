@@ -19,11 +19,11 @@ export function PageHeader() {
   const [lang] = useLanguageContext();
   const tx = t[lang];
 
-  const isProjectPage = pathname.startsWith('/portfolio/') && pathname.length > '/portfolio/'.length;
+  const isProjectPage = pathname.startsWith('/work/') && pathname.length > '/work/'.length;
 
   const titles = {
     '/': 'murillobazz',
-    '/portfolio': tx.navPortfolio,
+    '/work': tx.navWork,
     '/about': tx.navAbout,
     '/contact': tx.navContact,
     '/playground': tx.navPlayground,
@@ -31,7 +31,7 @@ export function PageHeader() {
 
   const tabLabels = {
     '/': tx.tabHome,
-    '/portfolio': tx.tabPortfolio,
+    '/work': tx.tabWork,
     '/about': tx.tabAbout,
     '/contact': tx.tabContact,
     '/playground': tx.tabPlayground,

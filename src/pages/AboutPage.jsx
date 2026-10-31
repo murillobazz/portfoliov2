@@ -1,28 +1,6 @@
 import { useLanguageContext } from '../context/LanguageContext';
 import t from '../utils/translations';
-
-function renderSegments(item) {
-  if (!Array.isArray(item)) return item;
-  return item.map((seg, i) =>
-    seg.b ? <strong key={i}>{seg.t}</strong> : <span key={i}>{seg.t}</span>
-  );
-}
-
-function withMoneriLink(text) {
-  const parts = text.split('moneri');
-  return parts.map((part, i) =>
-    i < parts.length - 1 ? (
-      <span key={i}>{part}<a href="https://moneri.com.br" target="_blank" rel="noopener noreferrer">moneri</a></span>
-    ) : part
-  );
-}
-
-function renderBio(lines) {
-  const arr = Array.isArray(lines) ? lines : [lines];
-  return arr.map((line, i) => (
-    <p key={i} className="about-bio" style={{margin : 0, padding: '0 0 12px 0'}}>{withMoneriLink(line)}</p>
-  ));
-}
+import { RichText } from '../components/RichText';
 
 export function AboutPage() {
   const [lang] = useLanguageContext();
@@ -34,23 +12,23 @@ export function AboutPage() {
       {/* ── Lead bio ── */}
       <div className="about-bio">
         <span className="about-col-label">{tx.aboutLabel}</span>
-        {renderBio(tx.about)}
+        {tx.about.map((line, i) => <p key={i}><RichText text={line} /></p>)}
       </div>
 
       {/* ── Work + Study columns ── */}
       <div className="about-columns">
         <section className="about-col about-col--work">
           <span className="about-col-label">{tx.workLabel}</span>
-          <p className="about-col-main">{withMoneriLink(tx.workMain)}</p>
+          <p className="about-col-main"><RichText text={tx.workMain} /></p>
           <ul className="about-col-list">
-            {tx.workItems.map((item, i) => <span key={i}>{renderSegments(item)}</span>)}
+            {tx.workItems.map((item, i) => <li key={i}><RichText text={item} /></li>)}
           </ul>
         </section>
 
         <section className="about-col about-col--study">
           <span className="about-col-label">{tx.studyLabel}</span>
           {tx.studyItems.map((item, i) => (
-            <p key={i} className="about-col-main">{item}</p>
+            <p key={i} className="about-col-main"><RichText text={item} /></p>
           ))}
         </section>
       </div>
@@ -61,7 +39,7 @@ export function AboutPage() {
         <ol className="about-whatsup-list">
           {tx.whatsupLines.map((line, i) => (
             <li key={i} className="about-whatsup-item">
-              <span className="about-whatsup-text">{line}</span>
+              <span className="about-whatsup-text"><RichText text={line} /></span>
             </li>
           ))}
         </ol>
