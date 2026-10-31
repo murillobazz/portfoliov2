@@ -26,6 +26,7 @@ export function PageHeader() {
     '/portfolio': tx.navPortfolio,
     '/about': tx.navAbout,
     '/contact': tx.navContact,
+    '/playground': tx.navPlayground,
   };
 
   const tabLabels = {
@@ -33,6 +34,7 @@ export function PageHeader() {
     '/portfolio': tx.tabPortfolio,
     '/about': tx.tabAbout,
     '/contact': tx.tabContact,
+    '/playground': tx.tabPlayground,
   };
 
   const title = titles[pathname] ?? 'murillobazz';

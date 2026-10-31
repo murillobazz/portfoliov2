@@ -405,6 +405,20 @@
   opacity: 0.9;
 }
 
+/* Five items on a phone: tighter, and wrap instead of scrolling sideways */
+@media (max-width: 480px) {
+  .site-nav {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .nav-item {
+    font-size: 12px;
+    padding: 10px 5px;
+    white-space: nowrap;
+  }
+}
+
 /* ── Portfolio page ── */
 .portfolio {
   width: 100%;
@@ -1049,3 +1063,283 @@
   }
 }
 
+
+/* ── Playground page ── */
+.playground {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  animation: rise 0.85s cubic-bezier(0.25, 1, 0.4, 1) both;
+  container-type: inline-size;
+}
+
+.pg-section {
+  width: 100%;
+  margin-top: 10px;
+  background: var(--card-bg);
+  padding: 12px;
+  box-sizing: border-box;
+  animation: rise 0.85s cubic-bezier(0.25, 1, 0.4, 1) 0.2s both;
+}
+
+.pg-text {
+  font-family: var(--sans);
+  font-size: clamp(14px, 1.4cqw, 18px);
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.45;
+  max-width: 72ch;
+  margin: 0 0 12px;
+}
+
+/* ── Mind the gap ── */
+.pg-gap-canvas {
+  display: block;
+  width: 100%;
+  height: clamp(260px, 40cqw, 420px);
+  touch-action: pan-y;
+  cursor: crosshair;
+  outline: 1px solid var(--border);
+  outline-offset: -1px;
+}
+
+/* ── Break my site ── */
+.pg-break {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.pg-controls,
+.pg-police {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  background: var(--bg);
+}
+
+.pg-group-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text);
+  text-transform: lowercase;
+  letter-spacing: 0.06em;
+  opacity: 0.8;
+  margin-top: 6px;
+}
+
+.pg-group-label:first-child {
+  margin-top: 0;
+}
+
+.pg-token {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+  cursor: pointer;
+}
+
+.pg-token input[type='color'] {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.pg-token input[type='color']::-webkit-color-swatch-wrapper { padding: 0; }
+.pg-token input[type='color']::-webkit-color-swatch { border: none; border-radius: 50%; }
+.pg-token input[type='color']::-moz-color-swatch { border: none; border-radius: 50%; }
+
+.pg-token-name {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--text-h);
+  min-width: 9ch;
+}
+
+.pg-token-value {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+.pg-select {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-h);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.pg-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.pg-button {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-h);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 16px;
+  cursor: pointer;
+  transition: color 0.18s, border-color 0.18s, background 0.18s;
+}
+
+.pg-button:hover:not(:disabled) {
+  background: var(--card-bg);
+  border-color: var(--text-h);
+}
+
+.pg-button--fix:not(:disabled),
+.pg-button--fix:hover:not(:disabled) {
+  font-family: ui-monospace, Consolas, monospace;
+  color: #111;
+  background: #fff;
+  border-color: #111;
+}
+
+.pg-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pg-pairs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pg-pair {
+  display: grid;
+  grid-template-columns: 40px 1fr auto 72px;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--text-h);
+}
+
+.pg-swatch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  font-family: var(--sans);
+  font-weight: 500;
+  outline: 1px solid var(--border);
+}
+
+.pg-ratio {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.pg-stamp {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  padding: 3px 0;
+  border: 1px solid currentColor;
+  color: var(--text);
+}
+
+.pg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+/* The fine: a rubber stamp that drops, hits, and leaves worn ink.
+   Hard-coded red on purpose: the ticket doesn't care about your tokens. */
+.pg-stamp--fine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #c0392b;
+  background: #fdecea;
+  border: 2px solid #c0392b;
+  border-radius: 3px;
+  transform: rotate(-4deg);
+  filter: url(#pg-ink);
+  animation: stamp-drop 0.5s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+
+.pg-stamp-no {
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+@keyframes stamp-drop {
+  0%   { transform: translateY(-40px) rotate(-16deg) scale(2.4); opacity: 0; }
+  50%  { transform: translateY(0) rotate(-3deg) scale(0.88);     opacity: 1; }
+  68%  { transform: rotate(-5deg) scale(1.05); }
+  100% { transform: rotate(-4deg) scale(1); }
+}
+
+/* The row takes the hit right when the stamp lands */
+.pg-pair--fail {
+  animation: stamp-thud 0.22s ease-out 0.25s both;
+}
+
+@keyframes stamp-thud {
+  0%   { transform: translate(0, 0); }
+  30%  { transform: translate(-2px, 2px); }
+  65%  { transform: translate(2px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* design is my passion: WordArt shadow on the page title */
+[data-passion] .page-title svg {
+  filter: drop-shadow(3px 3px 0 #00ffff) drop-shadow(3px 3px 0 #6600ff);
+}
+
+.pg-button--passion:not(:disabled) {
+  font-family: 'Comic Sans MS', 'Comic Neue', cursive;
+}
+
+.pg-verdict {
+  font-family: var(--sans);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text-h);
+  margin: 10px 0 0;
+}
+
+@media (max-width: 720px) {
+  .pg-break {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .playground,
+  .pg-section,
+  .pg-pair--fail,
+  .pg-stamp--fine {
+    animation: none;
+  }
+}

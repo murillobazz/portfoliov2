@@ -9,6 +9,7 @@ export function NavBar() {
   const NAV_ITEMS = [
     { to: '/', label: tx.navHome, end: true },
     { to: '/portfolio', label: tx.navPortfolio },
+    { to: '/playground', label: tx.navPlayground },
     { to: '/about', label: tx.navAbout },
     { to: '/contact', label: tx.navContact },
   ];

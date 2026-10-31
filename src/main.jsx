@@ -8,6 +8,7 @@ import { PortfolioPage } from './pages/PortfolioPage.jsx'
 import { ProjectPage } from './pages/ProjectPage.jsx'
 import { AboutPage } from './pages/AboutPage.jsx'
 import { ContactPage } from './pages/ContactPage.jsx'
+import { PlaygroundPage } from './pages/PlaygroundPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: 'portfolio/:slug', element: <ProjectPage /> },
       { path: 'about', element: <AboutPage /> },
       { path: 'contact', element: <ContactPage /> },
+      { path: 'playground', element: <PlaygroundPage /> },
     ],
   },
 ])
