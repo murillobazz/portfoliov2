@@ -18,7 +18,7 @@ const t = {
     workItems: [
       '**design system for the b2b dashboard**: from legacy code to figma and back into code, with a plugin and component generator I built;',
       '**ux/ui for new features**, from idea to deploy, on a creators platform with 100k+ users;',
-      '**self-service onboarding for new brands**: anyone on an e-commerce platform with a native moneri integration gets in on their own. from sep 2024 to feb 2026, **96% of the stores** from a partner platform joined with no help, where less than 10% of the old waitlist used to make it in, and since the basic plan went free, **74%** of those who start signing up reach the dashboard;',
+      '**self-service onboarding for new brands**: anyone on an e-commerce platform with a native moneri integration gets in on their own. from sep 2024 to sep 2025, **96% of the stores** from a partner platform joined with no help, where less than 10% of the old waitlist used to make it in, and since the basic plan went free, **74%** of those who start signing up reach the dashboard and start using the platform on their own;',
       '**the bridge between design and dev**: what gets designed ships the same;',
       '**ai in the daily workflow**: from everyday code to tier-1 support agents (n8n + claude api);',
       '**stack**: vue, nuxt, react, javascript, figma (and whatever else it takes).',
@@ -104,7 +104,7 @@ const t = {
     workItems: [
       '**design system do dashboard b2b**: do código legado ao figma e de volta pro código, com plugin e gerador de componentes feitos por mim;',
       '**ux/ui de features novas**, da ideia ao deploy, numa plataforma de creators com mais de 100 mil usuários;',
-      '**onboarding self-service de novas marcas**: quem usa um e-commerce com integração nativa com a moneri entra sozinho na plataforma. de set/2024 a fev/2026, **96% das lojas** de uma plataforma parceira entraram sem ajuda, quando antes menos de 10% da lista de espera conseguia entrar, e desde que o plano básico ficou gratuito, **74%** de quem começa o cadastro chega ao dashboard;',
+      '**onboarding self-service de novas marcas**: quem usa um e-commerce com integração nativa com a moneri entra sozinho na plataforma. de set/2024 a set/2025, **96% das lojas** de uma plataforma parceira entraram sem ajuda, quando antes menos de 10% da lista de espera conseguia entrar, e desde que o plano básico ficou gratuito, **74%** de quem começa o cadastro chega ao dashboard e começa a usar a plataforma de forma independente;',
       '**a ponte entre design e dev**: o que foi desenhado chega no código igual;',
       '**ia no fluxo de trabalho**: do código do dia a dia a agentes de suporte n1 (n8n + claude api);',
       '**stack**: vue, nuxt, react, javascript, figma (e o que mais precisar).',
