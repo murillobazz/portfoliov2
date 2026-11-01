@@ -1045,6 +1045,22 @@
   margin: 0 0 12px;
 }
 
+.pg-text a {
+  color: var(--text-h);
+  text-underline-offset: 3px;
+}
+
+/* A quiet aside at the end of the page */
+.pg-footnote {
+  align-self: center;
+  margin: 24px 0 8px;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text);
+  text-align: center;
+}
+
 /* ── Mind the gap ── */
 .pg-gap-canvas {
   display: block;
