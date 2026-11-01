@@ -1,92 +1,200 @@
+import { useEffect } from 'react';
 import { Navigate, Link, useParams } from 'react-router-dom';
 import { useLanguageContext } from '../context/LanguageContext';
 import t from '../utils/translations';
+import { RichText } from '../components/RichText';
+
+// A visual without `src` is still in production: placeholder in dev, nothing in prod
+function CaseImage({ image, todoLabel, eager = false }) {
+  if (!image) return null;
+  // Several phone screens side by side
+  if (image.images) {
+    return (
+      <figure className="case-figure">
+        <div className="case-phones">
+          {image.images.map(img => (
+            <img
+              key={img.src}
+              src={img.src}
+              alt={img.alt}
+              loading={eager ? 'eager' : 'lazy'}
+              decoding="async"
+            />
+          ))}
+        </div>
+        {image.caption && <figcaption>{image.caption}</figcaption>}
+      </figure>
+    );
+  }
+  if (!image.src) {
+    if (!import.meta.env.DEV) return null;
+    return (
+      <figure className="case-figure case-figure--todo">
+        <span>{todoLabel}: {image.todo}</span>
+      </figure>
+    );
+  }
+  return (
+    <figure className={`case-figure${image.narrow ? ' case-figure--narrow' : ''}`}>
+      <img
+        src={image.src}
+        alt={image.alt}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+        fetchpriority={eager ? 'high' : 'auto'}
+      />
+      {image.caption && <figcaption>{image.caption}</figcaption>}
+    </figure>
+  );
+}
+
+function Paragraphs({ body }) {
+  return body.map((block, i) => {
+    if (typeof block === 'string') return <p key={i}><RichText text={block} /></p>;
+    const List = block.ordered ? 'ol' : 'ul';
+    return (
+      <List key={i} className="case-list">
+        {block.list.map((item, j) => <li key={j}><RichText text={item} /></li>)}
+      </List>
+    );
+  });
+}
+
+// Design tokens, in either spelling ("space/10" in the JSON, var(--space-10) in
+// the .vue), get highlighted so the two panels can be read against each other
+const TOKEN = /(var\(--[a-z0-9-]+\)|"[a-z]+(?:\/[a-z0-9]+)+")/g;
+
+function CodePanels({ section }) {
+  return (
+    <figure className="case-figure case-code">
+      <div className="case-code-panels">
+        {section.panels.map(panel => (
+          <div key={panel.file} className="case-code-panel">
+            <span className="case-code-file">{panel.file}</span>
+            <pre>
+              <code>
+                {panel.code.split(TOKEN).map((part, i) =>
+                  i % 2 ? <mark key={i}>{part}</mark> : part
+                )}
+              </code>
+            </pre>
+          </div>
+        ))}
+      </div>
+      {section.caption && <figcaption>{section.caption}</figcaption>}
+    </figure>
+  );
+}
+
+function Section({ section, tx }) {
+  switch (section.type) {
+    case 'image':
+      return <CaseImage image={section} todoLabel={tx.caseVisualTodo} />;
+    case 'code':
+      return <CodePanels section={section} />;
+    case 'callout':
+      return (
+        <blockquote className="case-callout">
+          <p><RichText text={section.body} /></p>
+        </blockquote>
+      );
+    case 'stats':
+      return (
+        <section className="case-section">
+          <h2 className="case-heading">{section.heading}</h2>
+          <ul className="case-stats">
+            {section.items.map(item => (
+              <li key={item.value} className="case-stat">
+                <span className="case-stat-value">{item.value}</span>
+                <span className="case-stat-label">{item.label}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    default:
+      return (
+        <section className="case-section">
+          {section.heading && <h2 className="case-heading">{section.heading}</h2>}
+          <Paragraphs body={section.body} />
+        </section>
+      );
+  }
+}
 
 export function ProjectPage() {
   const { slug } = useParams();
   const [lang] = useLanguageContext();
   const tx = t[lang];
 
-  const project = tx.projects.find(p => p.slug === slug);
+  const index = tx.projects.findIndex(p => p.slug === slug);
+  const project = tx.projects[index];
+  const next = tx.projects[(index + 1) % tx.projects.length];
 
-  if (!project?.page) return <Navigate to="/portfolio" replace />;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
-  const { page } = project;
-  const mockupSrc = page.mockup ?? null;
-  const images = page.images ?? [];
+  useEffect(() => {
+    if (project) document.title = `${project.name} | murillobazz`;
+  }, [project]);
+
+  if (!project) return <Navigate to="/work" replace />;
 
   return (
-    <div className="project-page">
-      <div
-        className="project-page-left"
+    <article className="case">
+      <header
+        className="case-header"
         style={{ viewTransitionName: `project-card-${slug}` }}
       >
-        <Link to="/portfolio" className="project-page-back" viewTransition>
+        <Link to="/work" className="project-page-back" viewTransition>
           {tx.projectPageBack}
         </Link>
-        <h1 className="project-page-title">{project.name}</h1>
-        <div className="project-page-description">
-          {page.description.map((para, i) => (
-            <p key={i}>
-              {Array.isArray(para)
-                ? para.map((seg, j) =>
-                    seg.b
-                      ? <strong key={j}>{seg.t}</strong>
-                      : <span key={j}>{seg.t}</span>
-                  )
-                : para}
-            </p>
+        <p className="case-meta">
+          <span>{project.name}</span>
+          {project.tags.map(tag => <span key={tag} className="case-tag">{tag}</span>)}
+          {project.status && <span className="case-status">{project.status}</span>}
+        </p>
+        <h1 className="case-title">{project.title}</h1>
+        <p className="case-subtitle">{project.subtitle}</p>
+        {project.link && (
+          <a
+            href={project.link.href}
+            className="project-page-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {project.link.label} ↗
+          </a>
+        )}
+      </header>
+
+      <CaseImage image={project.hero} todoLabel={tx.caseVisualTodo} eager />
+
+      <section className="case-tldr" aria-label={tx.caseTldr}>
+        <span className="about-col-label">{tx.caseTldr}</span>
+        <dl>
+          {project.tldr.map(([label, value]) => (
+            <div key={label} className="case-tldr-row">
+              <dt>{label}</dt>
+              <dd><RichText text={value} /></dd>
+            </div>
           ))}
-          {page.accessLabel && project.href && (
-            <p>
-              <a
-                href={project.href}
-                className="project-page-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {page.accessLabel}
-              </a>
-            </p>
-          )}
-        </div>
+        </dl>
+      </section>
+
+      <div className="case-body">
+        {project.sections.map((section, i) => (
+          <Section key={i} section={section} tx={tx} />
+        ))}
       </div>
 
-      {mockupSrc && (
-        <div className="project-page-right">
-          <div
-            className="project-page-mockup"
-          >
-            <div className="project-page-accent" />
-            <img
-              src={mockupSrc}
-              alt={`${project.name} mockup`}
-              className="project-page-mockup-img"
-              width="560"
-              height="auto"
-              loading="eager"
-              decoding="async"
-              fetchpriority="high"
-            />
-          </div>
-        </div>
+      {next && next.slug !== slug && (
+        <Link to={`/work/${next.slug}`} className="case-next">
+          <span className="about-col-label">{tx.caseNext} →</span>
+          <span className="case-next-title">{next.title}</span>
+        </Link>
       )}
-
-      {images.length > 0 && (
-        <div className="project-page-right project-page-right--gallery">
-          {images.map((src, i) => (
-            <img
-              key={src}
-              src={src}
-              alt={`${project.name} – screenshot ${i + 1}`}
-              className="project-page-gallery-img"
-              loading={i === 0 ? 'eager' : 'lazy'}
-              decoding="async"
-              fetchpriority={i === 0 ? 'high' : 'auto'}
-            />
-          ))}
-        </div>
-      )}
-    </div>
+    </article>
   );
 }

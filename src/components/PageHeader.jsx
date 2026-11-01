@@ -5,12 +5,23 @@ import { PageTitle } from './PageTitle';
 import { useLanguageContext } from '../context/LanguageContext';
 import t from '../utils/translations';
 
-function PageHeaderInner({ title, showNav }) {
+// Home: the title sticks and stretches on scroll. Inner pages: a shorter title
+// that scrolls away, with only the nav sticking to the top
+function PageHeaderInner({ title, isHome }) {
+  if (isHome) {
+    return (
+      <header className="page-header">
+        <PageTitle>{title}</PageTitle>
+      </header>
+    );
+  }
   return (
-    <header className="page-header">
-      <PageTitle>{title}</PageTitle>
-      {showNav && <NavBar />}
-    </header>
+    <>
+      <header className="page-header page-header--compact">
+        <PageTitle>{title}</PageTitle>
+      </header>
+      <NavBar />
+    </>
   );
 }
 
@@ -19,20 +30,22 @@ export function PageHeader() {
   const [lang] = useLanguageContext();
   const tx = t[lang];
 
-  const isProjectPage = pathname.startsWith('/portfolio/') && pathname.length > '/portfolio/'.length;
+  const isProjectPage = pathname.startsWith('/work/') && pathname.length > '/work/'.length;
 
   const titles = {
     '/': 'murillobazz',
-    '/portfolio': tx.navPortfolio,
+    '/work': tx.navWork,
     '/about': tx.navAbout,
     '/contact': tx.navContact,
+    '/playground': tx.navPlayground,
   };
 
   const tabLabels = {
     '/': tx.tabHome,
-    '/portfolio': tx.tabPortfolio,
+    '/work': tx.tabWork,
     '/about': tx.tabAbout,
     '/contact': tx.tabContact,
+    '/playground': tx.tabPlayground,
   };
 
   const title = titles[pathname] ?? 'murillobazz';
@@ -45,5 +58,5 @@ export function PageHeader() {
 
   if (isProjectPage) return null;
 
-  return <PageHeaderInner key={pathname} title={title} showNav={pathname !== '/'} />;
+  return <PageHeaderInner key={pathname} title={title} isHome={pathname === '/'} />;
 }
