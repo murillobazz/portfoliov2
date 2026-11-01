@@ -5,9 +5,9 @@ const t = {
     taglinePrefix: 'design engineer, ',
     taglineEm: 'minding the gap',
     taglineGap: 'design ↔ code',
-    facts: 'rio de janeiro, brazil · remote or hybrid · fluent english',
+    facts: 'rio de janeiro, brazil · remote, hybrid or on-site · fluent english',
     aboutLabel: 'about',
-    aboutFacts: '**murillo bazilio** · rio de janeiro, brazil · remote or hybrid · english (c2) and portuguese (native)',
+    aboutFacts: '**murillo bazilio** · rio de janeiro, brazil · remote, hybrid or on-site · english (c2) and portuguese (native)',
     about: [
       "I studied broadcasting and joined [moneri](https://moneri.com.br) in 2021 as a **frontend dev**. along the way, I answered the company's call for **design work**, and I've been happily minding that gap ever since.",
       "that's when design really clicked for me. between self-teaching, a postgrad in ux and the joys and pains of learning by doing, I now **shape the ui** of the company's platforms, **weigh in on technical decisions** in the final code and **speak up for the user experience**.",
@@ -90,9 +90,9 @@ const t = {
     taglinePrefix: 'design engineer, ',
     taglineEm: 'minding the gap',
     taglineGap: 'design ↔ código',
-    facts: 'rio de janeiro · remoto ou híbrido · inglês fluente',
+    facts: 'rio de janeiro · remoto, híbrido ou presencial · inglês fluente',
     aboutLabel: 'sobre',
-    aboutFacts: '**murillo bazilio** · rio de janeiro · remoto ou híbrido · inglês (c2) e português (nativo)',
+    aboutFacts: '**murillo bazilio** · rio de janeiro · remoto, híbrido ou presencial · inglês (c2) e português (nativo)',
     about: [
       'me formei em radialismo e entrei na [moneri](https://moneri.com.br) em 2021 como **dev frontend**. no caminho, atendi ao chamado das **demandas de design** da empresa e, desde então, cubro essa lacuna com prazer.',
       'foi aí que me identifiquei de vez com o design. entre aprendizados autodidatas, uma pós em ux e as dores e delícias de aprender fazendo, hoje eu atuo na **concepção da ui** das plataformas da empresa, participo das **decisões técnicas do código final** e sou a **voz da experiência do usuário**.',
