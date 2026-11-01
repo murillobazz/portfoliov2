@@ -28,13 +28,14 @@ export function WorkPage() {
               <div className="project-folder">
                 {/* The preview peeks out of the folder like a sheet of paper */}
                 {project.preview && (
-                  <img
-                    className="project-folder-preview"
-                    src={project.preview}
-                    alt=""
-                    loading={i === 0 ? 'eager' : 'lazy'}
-                    decoding="async"
-                  />
+                  <span className="project-folder-preview">
+                    <img
+                      src={project.preview}
+                      alt=""
+                      loading={i === 0 ? 'eager' : 'lazy'}
+                      decoding="async"
+                    />
+                  </span>
                 )}
                 <Folder symbol={project.symbol} className="project-folder-icon" />
               </div>

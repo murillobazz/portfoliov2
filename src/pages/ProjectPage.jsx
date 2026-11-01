@@ -124,7 +124,7 @@ export function ProjectPage() {
         </Link>
         <p className="case-meta">
           <span>{project.name}</span>
-          {project.tags.map(tag => <span key={tag}>{tag}</span>)}
+          {project.tags.map(tag => <span key={tag} className="case-tag">{tag}</span>)}
           {project.status && <span className="case-status">{project.status}</span>}
         </p>
         <h1 className="case-title">{project.title}</h1>

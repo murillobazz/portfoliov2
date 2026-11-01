@@ -14,14 +14,16 @@ const pt = [
     status: 'em andamento',
     tags: ['design system', 'plugin do figma', 'vue'],
     hero: {
-      todo: 'componentes v2 no Figma (variables + variantes), exportados em alta do arquivo do DS',
+      src: '/design-system/figma-v2.png',
+      alt: 'Componentes v2 no Figma: botões, seletor de período, inputs, campos de data, select aberto e a barra de filtros montada',
+      caption: 'o ciclo de formulários e filtros da v2, direto do Figma.',
     },
     tldr: [
       ['Papel', 'tudo: auditoria, design no Figma, plugin, gerador de código'],
       ['Time', 'só eu'],
       ['Quando', 'set/2026 → em andamento'],
       ['Produto', 'dashboard onde as marcas parceiras (os grandes clientes B2B da Moneri) acompanham vendas, creators e comissões'],
-      ['Até aqui', '20 componentes v2 · botão primário de 3,3:1 → 4,66:1 de contraste · badges de ~2,4:1 → 5–7:1 · 11 tamanhos de fonte → 6 · 41 de 45 variantes geradas batendo com o Figma em até 1px'],
+      ['Até aqui', '20 componentes v2 · botão primário de 3,4:1 → 4,66:1 de contraste · badges de 2,2–3,4:1 → 5–7:1 · 11 tamanhos de fonte → 6 · 41 de 45 variantes geradas batendo com o Figma em até 1px'],
     ],
     sections: [
       {
@@ -33,7 +35,7 @@ const pt = [
           'O objetivo do DS é dar autonomia: qualquer pessoa do time pode desenvolver uma feature nova e ela já sai coesa com o resto.',
         ],
       },
-      { type: 'image', todo: 'recortes ampliados das inconsistências: dois inputs "iguais", link verde × link azul, badges' },
+      { type: 'image', src: '/design-system/inconsistencias.png', alt: 'Quatro recortes da v1: dois inputs de sistemas diferentes, um amarelo com três nomes, link verde e link azul, e badges com texto branco abaixo de 4,5:1', caption: 'quatro jeitos diferentes de resolver a mesma coisa, todos em produção.' },
       {
         type: 'text',
         heading: 'Primeiro o que existe, depois o que deveria existir',
@@ -43,7 +45,7 @@ const pt = [
       },
       {
         type: 'callout',
-        body: 'Em uma análise inicial de heurísticas de UX e acessibilidade, o número 4,5 virou prioridade: badges em 2,5:1 e o botão primário em 3,3:1 de contraste. O mínimo pra texto é **4,5:1**. Acessibilidade virou o primeiro item da v2, antes de qualquer mudança estética, e isso já implicava uma decisão difícil: **usar menos o verde original da marca.**',
+        body: 'Em uma análise inicial de heurísticas de UX e acessibilidade, o número 4,5 virou prioridade: badges entre 2,2:1 e 3,4:1 e o botão primário em 3,4:1 de contraste. O mínimo pra texto é **4,5:1**. Acessibilidade virou o primeiro item da v2, antes de qualquer mudança estética, e isso já implicava uma decisão difícil: **usar menos o verde original da marca.**',
       },
       {
         type: 'text',
@@ -53,7 +55,7 @@ const pt = [
           'O verde original continua como identidade, na sidebar, onde é fundo para a marca e não texto de ação.',
         ],
       },
-      { type: 'image', todo: 'escala do verde com a razão de contraste de cada tom; o botão antes/depois com o número em destaque' },
+      { type: 'image', src: '/design-system/verde.png', alt: 'Escala do verde de 50 a 900 com o contraste do texto branco em cada tom, e o mesmo botão em três verdes: 3,40:1, 4,25:1 e 4,66:1', caption: 'a escala do verde e os três botões que testei.' },
       {
         type: 'text',
         heading: 'O Figma manda, o código obedece',
@@ -74,7 +76,7 @@ const pt = [
         alt: 'Preview dos componentes v2 gerados pelo sync: status badges, botão primário em três estados, barra de filtros, grupo de KPIs e paginação',
         caption: 'componentes v2 renderizados direto do código que o sync gerou.',
       },
-      { type: 'image', todo: 'diagrama: Figma → Gerar/Exportar → JSON → sync → .vue + tokens; gif marcando uma section como pronta até o componente aparecer no preview' },
+      { type: 'image', src: '/design-system/fluxo.png', alt: 'Fluxo em quatro etapas: Gerar e Exportar no plugin do Figma, Sync no código e os componentes Vue com tokens em CSS', caption: 'do Figma ao .vue, sem redesenhar nada à mão.' },
       {
         type: 'text',
         heading: 'Decisões que o código não toma sozinho',
@@ -88,7 +90,7 @@ const pt = [
           },
         ],
       },
-      { type: 'image', todo: 'recortes antes/depois da tipografia e dos KPIs unidos' },
+      { type: 'image', src: '/design-system/kpis.png', alt: 'Antes: cinco cards de KPI soltos em Poppins. Depois: um bloco único em Manrope e Sora com números tabulares', caption: 'os mesmos cinco números, antes e depois.' },
       {
         type: 'stats',
         heading: 'Como sei que está funcionando (por enquanto)',
@@ -146,7 +148,7 @@ const pt = [
           'Esse caminho me deixou gastar o tempo onde a IA não decide: o ritmo da respiração, o texto de cada resposta, como o resultado é apresentado, tudo em contato direto com os stakeholders da empresa.',
         ],
       },
-      { type: 'image', todo: 'telas-proposta do Figma × telas finais' },
+      { type: 'image', src: '/enjoy-rio/propostas.png', alt: 'À esquerda, o mockup do fluxo aprovado no Figma com quatro telas: respiração com um círculo azul, roda de emoções em pétalas, a primeira pergunta e o resultado. À direita, as mesmas quatro telas no ar: respiração com um sol amarelo, emoções em quatro círculos, a pergunta e o resultado em Arraial do Cabo', caption: 'a proposta que o cliente aprovou e o que foi pro ar.' },
       {
         type: 'text',
         heading: 'Desacelerando antes de perguntar',
@@ -172,7 +174,7 @@ const pt = [
           'Ou seja: os pesos *são* a experiência. Sem dúvida, esta foi a parte mais trabalhosa do projeto: um design visual satisfatório não seria nada sem um motor consistente por trás.',
         ],
       },
-      { type: 'image', todo: 'diagrama simples: emoção + perguntas → dimensões → perfil → distância → top 3' },
+      { type: 'image', src: '/enjoy-rio/motor.png', alt: 'Diagrama do motor: emoção e perguntas somam pontos em 7 dimensões, as duas mais fortes definem o perfil, a distância filtra e saem os 3 destinos com maior nota', caption: 'como uma resposta vira um destino.' },
       {
         type: 'text',
         heading: 'Construir, auditar, ajustar',
@@ -181,7 +183,7 @@ const pt = [
           'Ele achou coisas que um teste manual dificilmente pegaria: as primeiras perguntas decidiam quase tudo sozinhas, a emoção pesava demais, e tinha destino que nunca chegava ao topo. Virou um relatório pra stakeholder, e as correções saíram em poucas rodadas: perguntas reordenadas, a emoção com peso menor, perfis de destino revisados (e dois destinos removidos em vez de ajustados artificialmente) e um bônus pelo cenário que a pessoa diz preferir.',
         ],
       },
-      { type: 'image', todo: 'uma página do relatório de auditoria + antes/depois da tela de resultado' },
+      { type: 'image', src: '/enjoy-rio/relatorio.png', alt: 'Página do relatório de auditoria do motor, com os três primeiros problemas: a primeira resposta domina, a emoção pesa demais e um destino nunca chega ao primeiro lugar', caption: 'um trecho do relatório que foi pra stakeholder.' },
       {
         type: 'text',
         heading: 'E depois',
@@ -197,7 +199,9 @@ const pt = [
     status: null,
     tags: ['hierarquia de informação', 'mobile', 'white-label'],
     hero: {
-      todo: 'antes/depois lado a lado, recortado no primeiro "scroll" do celular (anonimizado)',
+      src: '/marcas/hero.png',
+      alt: 'Página de marca antes e depois, no primeiro scroll do celular: antes o código é um campo no meio do card; depois ganha um card próprio no topo',
+      caption: 'antes e depois, no primeiro scroll. marcas e banners trocados por fictícios.',
     },
     tldr: [
       ['Produto', 'plataforma de creators da Moneri (mais de 100 mil usuários): cada marca tem uma página onde o creator pega o código que divulga'],
@@ -215,7 +219,7 @@ const pt = [
           'No Clarity dava pra ver: os creators demoravam muito pra emitir o código na página da marca.',
         ],
       },
-      { type: 'image', todo: 'tela antiga com o código marcado, mostrando o quanto ele "some" + print anonimizado do Clarity' },
+      { type: 'image', src: '/marcas/lost.png', alt: 'A página antiga desfocada, com só o campo do código em foco', caption: 'tira o foco de todo o resto e sobra isso: o código.', narrow: true },
       {
         type: 'text',
         heading: 'O que o creator veio fazer aqui?',
@@ -233,16 +237,17 @@ const pt = [
           },
         ],
       },
-      { type: 'image', todo: '"mapa" da página antiga × nova, com blocos coloridos por tipo de conteúdo' },
+      { type: 'image', src: '/marcas/mapa.png', alt: 'Mapa das páginas antiga e nova, do topo ao fim, com blocos coloridos por tipo de conteúdo: banner, código, grupo e metas, comunidade e materiais, regras', caption: 'a página antiga e a nova, do topo ao fim.' },
       {
         type: 'text',
         heading: 'Um layout, quatro situações',
         body: [
           'A mesma estrutura precisava funcionar pro creator padrão, pro grupo com descrição, pras marcas com várias metas e pro creator que ainda não tem código. Nesse último caso, criar o cupom virou um bloco só (prefixo, campo, termo, botão), em vez de pedaços espalhados no texto.',
           'E tudo isso no tema de cada marca: o destaque vem de superfície e posição, não só de cor, então funciona com o vermelho de uma e o roxo de outra. Tecnicamente, a página se adapta por legibilidade a depender das cores escolhidas pela marca, mudando automaticamente a cor de texto e/ou fundo.',
+          'E o conteúdo também é da marca: descrição, metas, grupo e materiais são personalizados por cada uma. Por isso algumas telas mostram informações diferentes, ou deixam de mostrar, em relação às outras. O layout tem que segurar a página cheia e a quase vazia.',
         ],
       },
-      { type: 'image', todo: 'grade 2×2 com o topo dos quatro estados, em temas de marca fictícios' },
+      { type: 'image', src: '/marcas/states.png', alt: 'Três estados da página nova: creator padrão, grupo com descrição e várias metas, e creator ainda sem código, em temas vermelho e roxo', caption: 'um layout, três situações. marcas fictícias, cada uma com o próprio conteúdo.' },
       {
         type: 'text',
         heading: 'Tratamos do urgente para navegar com calma para o definitivo',
@@ -263,14 +268,16 @@ const en = [
     status: 'in progress',
     tags: ['design system', 'figma plugin', 'vue'],
     hero: {
-      todo: 'v2 components in Figma (variables + variants), high-res export from the DS file',
+      src: '/design-system/figma-v2.png',
+      alt: 'v2 components in Figma: buttons, period selector, inputs, date fields, an open select and the assembled filter bar',
+      caption: 'the v2 forms and filters cycle, straight from Figma.',
     },
     tldr: [
       ['Role', 'everything: audit, Figma design, plugin, code generator'],
       ['Team', 'just me'],
       ['When', 'sep/2026 → in progress'],
       ['Product', "the dashboard where partner brands (Moneri's big B2B clients) track sales, creators and commissions"],
-      ['So far', '20 v2 components · primary button from 3.3:1 → 4.66:1 contrast · badges from ~2.4:1 → 5–7:1 · 11 font sizes → 6 · 41 of 45 generated variants matching Figma within 1px'],
+      ['So far', '20 v2 components · primary button from 3.4:1 → 4.66:1 contrast · badges from 2.2–3.4:1 → 5–7:1 · 11 font sizes → 6 · 41 of 45 generated variants matching Figma within 1px'],
     ],
     sections: [
       {
@@ -282,7 +289,7 @@ const en = [
           'The goal of the DS is autonomy: anyone on the team can build a new feature and it already comes out consistent with the rest.',
         ],
       },
-      { type: 'image', todo: 'close-ups of the inconsistencies: two "identical" inputs, green vs blue link, badges' },
+      { type: 'image', src: '/design-system/inconsistencias-en.png', alt: 'Four v1 close-ups: two inputs from different systems, one yellow with three names, a green link and a blue link, and white-text badges below 4.5:1', caption: 'four different ways of solving the same thing, all in production.' },
       {
         type: 'text',
         heading: 'What exists first, what should exist later',
@@ -292,7 +299,7 @@ const en = [
       },
       {
         type: 'callout',
-        body: 'A first pass of UX and accessibility heuristics made one number the priority: badges at 2.5:1 and the primary button at 3.3:1 contrast. The minimum for text is **4.5:1**. Accessibility became the first item of v2, before any aesthetic change, and that already meant a tough call: **using less of the original brand green.**',
+        body: 'A first pass of UX and accessibility heuristics made one number the priority: badges between 2.2:1 and 3.4:1 and the primary button at 3.4:1 contrast. The minimum for text is **4.5:1**. Accessibility became the first item of v2, before any aesthetic change, and that already meant a tough call: **using less of the original brand green.**',
       },
       {
         type: 'text',
@@ -302,7 +309,7 @@ const en = [
           'The original green stays as identity in the sidebar, where it is a brand background, not action text.',
         ],
       },
-      { type: 'image', todo: 'the green scale with each shade’s contrast ratio; the button before/after with the number highlighted' },
+      { type: 'image', src: '/design-system/verde-en.png', alt: 'Green scale from 50 to 900 with the white-text contrast on each step, and the same button in three greens: 3.40:1, 4.25:1 and 4.66:1', caption: 'the green scale and the three buttons I tested.' },
       {
         type: 'text',
         heading: 'Figma calls the shots, code follows',
@@ -323,7 +330,7 @@ const en = [
         alt: 'Preview of the v2 components generated by the sync: status badges, primary button in three states, filter bar, KPI group and pagination',
         caption: 'v2 components rendered straight from the code the sync generated.',
       },
-      { type: 'image', todo: 'diagram: Figma → Generate/Export → JSON → sync → .vue + tokens; gif from marking a section as ready to the component showing up in the preview' },
+      { type: 'image', src: '/design-system/fluxo-en.png', alt: 'Four-step flow: Generate and Export in the Figma plugin, Sync in code, and the Vue components with CSS tokens', caption: 'from Figma to .vue, nothing redrawn by hand.' },
       {
         type: 'text',
         heading: "Decisions code doesn't make on its own",
@@ -337,7 +344,7 @@ const en = [
           },
         ],
       },
-      { type: 'image', todo: 'before/after close-ups of the typography and the joined KPIs' },
+      { type: 'image', src: '/design-system/kpis-en.png', alt: 'Before: five loose KPI cards in Poppins. After: one block in Manrope and Sora with tabular numbers', caption: 'the same five numbers, before and after.' },
       {
         type: 'stats',
         heading: "How I know it's working (so far)",
@@ -395,7 +402,7 @@ const en = [
           "That path let me spend my time where AI doesn't decide: the pace of the breathing, the copy of each answer, how the result is presented, all in direct contact with the company's stakeholders.",
         ],
       },
-      { type: 'image', todo: 'Figma proposal screens vs final screens' },
+      { type: 'image', src: '/enjoy-rio/propostas-en.png', alt: 'On the left, the flow mockup approved in Figma with four screens: breathing with a blue circle, a petal emotion wheel, the first question and the result. On the right, the same four screens live: breathing with a yellow sun, emotions as four circles, the question and the result in Arraial do Cabo', caption: 'the proposal the client approved and what went live.' },
       {
         type: 'text',
         heading: 'Slowing down before asking',
@@ -421,7 +428,7 @@ const en = [
           'In other words: the weights *are* the experience. This was easily the hardest part of the project: a pleasing visual design would be nothing without a consistent engine behind it.',
         ],
       },
-      { type: 'image', todo: 'simple diagram: emotion + questions → dimensions → profile → distance → top 3' },
+      { type: 'image', src: '/enjoy-rio/motor-en.png', alt: 'Engine diagram: emotion and questions add points to 7 dimensions, the two strongest pick the profile, distance filters, and the 3 highest-scoring destinations come out', caption: 'how an answer becomes a destination.' },
       {
         type: 'text',
         heading: 'Build, audit, adjust',
@@ -430,7 +437,7 @@ const en = [
           "It found things manual testing would hardly catch: the first questions decided almost everything on their own, the emotion weighed too much, and some destinations never made it to the top. That became a report for the stakeholder, and the fixes came in a few rounds: questions reordered, a lighter weight for the emotion, revised destination profiles (two destinations removed instead of artificially tuned) and a bonus for the scenery people say they prefer.",
         ],
       },
-      { type: 'image', todo: 'a page of the audit report + before/after of the result screen' },
+      { type: 'image', src: '/enjoy-rio/relatorio.png', alt: 'Page of the engine audit report (in Portuguese) with the first three issues: the first answer dominates, the emotion weighs too much, and one destination never reaches first place', caption: 'part of the report that went to the stakeholder (in Portuguese).' },
       {
         type: 'text',
         heading: 'What comes next',
@@ -446,7 +453,9 @@ const en = [
     status: null,
     tags: ['information hierarchy', 'mobile', 'white-label'],
     hero: {
-      todo: 'before/after side by side, cropped at the first phone "scroll" (anonymized)',
+      src: '/marcas/hero-en.png',
+      alt: 'Brand page before and after, at the first phone scroll: before, the code is a field in the middle of the card; after, it gets its own card at the top',
+      caption: 'before and after, at the first scroll. brands and banners swapped for fictional ones.',
     },
     tldr: [
       ['Product', "Moneri's creators platform (100k+ users): every brand has a page where creators get the code they promote"],
@@ -464,7 +473,7 @@ const en = [
           'Clarity made it visible: creators took a long time to generate their code on the brand page.',
         ],
       },
-      { type: 'image', todo: 'old screen with the code highlighted, showing how much it "disappears" + anonymized Clarity print' },
+      { type: 'image', src: '/marcas/lost-en.png', alt: 'The old page blurred, with only the code field in focus', caption: 'take the focus off everything else and this is what is left: the code.', narrow: true },
       {
         type: 'text',
         heading: 'What did the creator come here to do?',
@@ -482,16 +491,17 @@ const en = [
           },
         ],
       },
-      { type: 'image', todo: '"map" of the old vs new page, with blocks colored by content type' },
+      { type: 'image', src: '/marcas/mapa-en.png', alt: 'Map of the old and new pages, top to bottom, with blocks colored by content type: banner, code, group and goals, community and materials, rules', caption: 'the old page and the new one, top to bottom.' },
       {
         type: 'text',
         heading: 'One layout, four situations',
         body: [
           "The same structure had to work for the standard creator, for groups with a description, for brands with several goals and for creators who don't have a code yet. In that last case, creating the coupon became a single block (prefix, field, terms, button) instead of pieces scattered across the text.",
           "And all of it in each brand's theme: emphasis comes from surface and position, not just color, so it works with one brand's red and another's purple. Under the hood, the page adapts for legibility based on the brand's colors, automatically switching text and/or background color.",
+          "The content belongs to the brand too: description, goals, group and materials are customized by each one. That's why some screens show different information, or leave some out, compared to the others. The layout has to hold both the full page and the nearly empty one.",
         ],
       },
-      { type: 'image', todo: '2×2 grid with the top of the four states, in fictional brand themes' },
+      { type: 'image', src: '/marcas/states-en.png', alt: 'Three states of the new page: standard creator, group with a description and several goals, and a creator with no code yet, in red and purple themes', caption: 'one layout, three situations. fictional brands, each with its own content.' },
       {
         type: 'text',
         heading: 'Urgent now, definitive later',
@@ -508,7 +518,7 @@ const en = [
 const META = {
   'design-system': { symbol: 'components', preview: '/design-system/components-v2.jpg' },
   'enjoy-rio': { symbol: 'emotion', preview: '/enjoy-rio/welcome.jpg' },
-  marcas: { symbol: 'coupon', preview: null },
+  marcas: { symbol: 'coupon', preview: '/marcas/states.png' },
 };
 
 const withMeta = list => list.map(c => ({ ...c, ...META[c.slug] }));
