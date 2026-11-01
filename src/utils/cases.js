@@ -31,12 +31,12 @@ const pt = [
         type: 'text',
         heading: 'Um time pequeno que entrega rápido',
         body: [
-          'O time de dev da Moneri é enxuto e entrega muito rápido. Rápido demais pra parar e discutir como cada página ou função nova deveria ser.',
-          'Sem um sistema, cada pessoa resolvia do seu jeito, e o dashboard foi acumulando os jeitos de todo mundo: dois sistemas de input re-estilizados pra parecerem um só, links verdes num lugar e azuis em outro, nomes de cor herdados de um produto antigo, três nomes diferentes pro mesmo amarelo.',
+          'O time de dev da Moneri é enxuto e entrega rápido, e esse ritmo deixava pouco espaço pra alinhar como cada tela nova deveria ser.',
+          'Sem uma referência comum, cada entrega encontrava a própria solução, e com o tempo o dashboard reuniu várias delas: dois sistemas de input re-estilizados pra parecerem um só, links verdes num lugar e azuis em outro, nomes de cor herdados de um produto antigo, três nomes diferentes pro mesmo amarelo.',
           'O objetivo do DS é dar autonomia: qualquer pessoa do time pode desenvolver uma feature nova e ela já sai coesa com o resto.',
         ],
       },
-      { type: 'image', src: '/design-system/inconsistencias.png', alt: 'Quatro recortes da v1: dois inputs de sistemas diferentes, um amarelo com três nomes, link verde e link azul, e badges com texto branco abaixo de 4,5:1', caption: 'quatro jeitos diferentes de resolver a mesma coisa, todos em produção.' },
+      { type: 'image', src: '/design-system/inconsistencias.png', alt: 'Quatro recortes da v1: dois inputs de sistemas diferentes, um amarelo com três nomes, link verde e link azul, e badges com texto branco abaixo de 4,5:1', caption: 'quatro soluções diferentes pro mesmo problema, que um sistema resolve de uma vez.' },
       {
         type: 'text',
         heading: 'Primeiro o que existe, depois o que deveria existir',
@@ -52,7 +52,7 @@ const pt = [
         type: 'text',
         heading: 'Usar menos a cor da marca (de propósito)',
         body: [
-          'O verde da Moneri (`#669933`) com texto branco não passa. Em vez de abandonar o verde, criei uma escala a partir dele e passei os botões pra um tom mais escuro (`#558029`, 4,66:1). Testei um intermediário mais fiel ao original (`#5A872D`), mas ele parava em 4,25:1. Perto, mas ainda assim fora. Já que chegamos até aqui, por que não atingir a marca de uma vez?',
+          'O verde da Moneri (`#669933`) com texto branco fica abaixo do mínimo de 4,5:1. Em vez de abandonar o verde, criei uma escala a partir dele e passei os botões pra um tom mais escuro (`#558029`, 4,66:1). Testei um intermediário mais fiel ao original (`#5A872D`), mas ele parava em 4,25:1. Perto, mas ainda assim fora. Já que chegamos até aqui, por que não atingir a marca de uma vez?',
           'O verde original continua como identidade, na sidebar, onde é fundo para a marca e não texto de ação.',
         ],
       },
@@ -172,7 +172,7 @@ const pt = [
     tldr: [
       ['Cliente', '[Enjoy Rio](https://www.enjoyrio.travel/pt/), roteiros e experiências no estado do Rio de Janeiro'],
       ['Papel', 'design e desenvolvimento de ponta a ponta: propostas no Figma, fluxo, interações, motor de recomendação, front-end'],
-      ['Time', 'eu + uma stakeholder do cliente com expertise em neurolinguística (curadoria das perguntas e emoções)'],
+      ['Time', 'eu + stakeholders do cliente (curadoria das perguntas e emoções)'],
       ['Quando', 'abr–jun/2026'],
       ['Stack', 'React + TypeScript + Vite, desenvolvimento spec-driven assistido por IA'],
       ['Resultado', 'quiz no ar · 7 dimensões emocionais, 6 perfis de viagem, 16 destinos · a pessoa sai com até 3 destinos e um atalho pra falar com a agência no WhatsApp'],
@@ -208,7 +208,7 @@ const pt = [
         type: 'text',
         heading: 'A roda de emoções',
         body: [
-          'A primeira escolha é uma emoção, numa roda com rostinhos ilustrados. A referência é a roda de emoções de Plutchik, uma sugestão da curadoria da stakeholder. Limitar a quatro emoções (intenso, alegre, equilibrado, frustrado) também veio da leitura dela em neurolinguística: menos opções, escolha mais honesta.',
+          'A primeira escolha é uma emoção, numa roda com rostinhos ilustrados. A referência é a roda de emoções de Plutchik, uma sugestão da curadoria do cliente. Limitar a quatro emoções (intenso, alegre, equilibrado, frustrado) também veio dessa curadoria, com base em neurolinguística: menos opções, escolha mais honesta.',
         ],
       },
       { type: 'image', src: '/enjoy-rio/emotions.jpg', alt: 'Roda de emoções do quiz com quatro opções ilustradas', caption: 'quatro emoções, escolha mais honesta.', narrow: true },
@@ -226,10 +226,10 @@ const pt = [
         heading: 'Construir, auditar, ajustar',
         body: [
           'Como o motor foi construído com assistência de IA, eu não queria confiar só no "parece que funciona". Antes de colocar na frente de pessoas reais, criei um **agente de auditoria**: ele simulava combinações de respostas e checava se o motor se comportava como a gente esperava.',
-          'Ele achou coisas que um teste manual dificilmente pegaria: as primeiras perguntas decidiam quase tudo sozinhas, a emoção pesava demais, e tinha destino que nunca chegava ao topo. Virou um relatório pra stakeholder, e as correções saíram em poucas rodadas: perguntas reordenadas, a emoção com peso menor, perfis de destino revisados (e dois destinos removidos em vez de ajustados artificialmente) e um bônus pelo cenário que a pessoa diz preferir.',
+          'Ele achou coisas que um teste manual dificilmente pegaria: as primeiras perguntas decidiam quase tudo sozinhas, a emoção pesava demais, e tinha destino que nunca chegava ao topo. Virou um relatório pros stakeholders, e as correções saíram em poucas rodadas: perguntas reordenadas, a emoção com peso menor, perfis de destino revisados (e dois destinos removidos em vez de ajustados artificialmente) e um bônus pelo cenário que a pessoa diz preferir.',
         ],
       },
-      { type: 'image', src: '/enjoy-rio/relatorio.png', alt: 'Página do relatório de auditoria do motor, com os três primeiros problemas: a primeira resposta domina, a emoção pesa demais e um destino nunca chega ao primeiro lugar', caption: 'um trecho do relatório que foi pra stakeholder.' },
+      { type: 'image', src: '/enjoy-rio/relatorio.png', alt: 'Página do relatório de auditoria do motor, com os três primeiros problemas: a primeira resposta domina, a emoção pesa demais e um destino nunca chega ao primeiro lugar. Destinos, respostas e dimensões aparecem com nomes genéricos', caption: 'um trecho do relatório que foi pros stakeholders, com os nomes de destinos, respostas e dimensões omitidos.' },
       {
         type: 'text',
         heading: 'E depois',
@@ -260,9 +260,9 @@ const pt = [
     sections: [
       {
         type: 'text',
-        heading: 'Dívida de UX se acumula em silêncio',
+        heading: 'Uma página que cresceu junto com a plataforma',
         body: [
-          'Ninguém desenhou essa página pra ser confusa, mas ela ficou anos sem atualização de design enquanto a plataforma recebia novas funcionalidades que a página teve que comportar. Cada lançamento colocou sua peça onde cabia: metas aqui, aviso de grupo ali, mais um botão de materiais acolá. Depois de algumas rodadas, a coisa mais importante da página, **o código que o creator compartilha pra ganhar comissão**, era um botão que se perdia no meio de tudo.',
+          'Ninguém desenhou essa página pra ser confusa, mas ela ficou anos sem atualização de design enquanto a plataforma recebia novas funcionalidades que a página teve que comportar. Cada lançamento colocou sua peça onde cabia: metas aqui, aviso de grupo ali, mais um botão de materiais acolá. Depois de algumas rodadas, a coisa mais importante da página, **o código que o creator compartilha pra ganhar comissão**, foi perdendo espaço pra tudo o que chegou depois.',
           'No Clarity dava pra ver: os creators demoravam muito pra emitir o código na página da marca.',
         ],
       },
@@ -299,7 +299,7 @@ const pt = [
         type: 'text',
         heading: 'Tratamos do urgente para navegar com calma para o definitivo',
         body: [
-          'Esse redesign foi feito sob demanda urgente: resolver o problema sem parar o resto. A versão definitiva vem quando a plataforma de creators ganhar seu próprio design system, como o dashboard B2B está ganhando agora. Até lá, a lição que fica é definir antes onde cada *tipo* de informação mora, pra próxima feature já nascer no lugar certo.',
+          'Esse redesign veio com prazo curto: resolver o principal sem parar as outras entregas. A versão definitiva vem quando a plataforma de creators ganhar seu próprio design system, como o dashboard B2B está ganhando agora. Até lá, a lição que fica é definir antes onde cada *tipo* de informação mora, pra próxima feature já nascer no lugar certo.',
         ],
       },
     ],
@@ -332,12 +332,12 @@ const en = [
         type: 'text',
         heading: 'A small team that ships fast',
         body: [
-          "Moneri's dev team is lean and ships really fast. Too fast to stop and discuss how every new page or feature should look.",
-          "Without a system, everyone solved things their own way, and the dashboard piled up everyone's ways: two input systems restyled to pass as one, green links here and blue links there, color names inherited from an old product, three different names for the same yellow.",
+          "Moneri's dev team is lean and ships fast, and that pace left little room to align on how each new screen should look.",
+          "Without a shared reference, each delivery found its own solution, and over time the dashboard gathered several of them: two input systems restyled to pass as one, green links here and blue links there, color names inherited from an old product, three different names for the same yellow.",
           'The goal of the DS is autonomy: anyone on the team can build a new feature and it already comes out consistent with the rest.',
         ],
       },
-      { type: 'image', src: '/design-system/inconsistencias-en.png', alt: 'Four v1 close-ups: two inputs from different systems, one yellow with three names, a green link and a blue link, and white-text badges below 4.5:1', caption: 'four different ways of solving the same thing, all in production.' },
+      { type: 'image', src: '/design-system/inconsistencias-en.png', alt: 'Four v1 close-ups: two inputs from different systems, one yellow with three names, a green link and a blue link, and white-text badges below 4.5:1', caption: 'four different solutions to the same problem, which a system solves once.' },
       {
         type: 'text',
         heading: 'What exists first, what should exist later',
@@ -353,7 +353,7 @@ const en = [
         type: 'text',
         heading: 'Using less of the brand color (on purpose)',
         body: [
-          "Moneri's green (`#669933`) with white text doesn't pass. Instead of dropping the green, I built a scale from it and moved buttons to a darker shade (`#558029`, 4.66:1). I tried an in-between closer to the original (`#5A872D`), but it stopped at 4.25:1. Close, but still out. Having come this far, why not clear the bar for good?",
+          "Moneri's green (`#669933`) with white text falls below the 4.5:1 minimum. Instead of dropping the green, I built a scale from it and moved buttons to a darker shade (`#558029`, 4.66:1). I tried an in-between closer to the original (`#5A872D`), but it stopped at 4.25:1. Close, but still out. Having come this far, why not clear the bar for good?",
           'The original green stays as identity in the sidebar, where it is a brand background, not action text.',
         ],
       },
@@ -473,7 +473,7 @@ const en = [
     tldr: [
       ['Client', '[Enjoy Rio](https://www.enjoyrio.travel/pt/), trips and experiences in the state of Rio de Janeiro'],
       ['Role', 'end-to-end design and development: Figma proposals, flow, interactions, recommendation engine, front-end'],
-      ['Team', 'me + a client stakeholder with neurolinguistics expertise (curating questions and emotions)'],
+      ['Team', 'me + client stakeholders (curating questions and emotions)'],
       ['When', 'apr–jun/2026'],
       ['Stack', 'React + TypeScript + Vite, AI-assisted spec-driven development'],
       ['Result', 'live quiz · 7 emotional dimensions, 6 travel profiles, 16 destinations · you leave with up to 3 destinations and a shortcut to talk to the agency on WhatsApp'],
@@ -509,7 +509,7 @@ const en = [
         type: 'text',
         heading: 'The emotion wheel',
         body: [
-          "The first choice is an emotion, on a wheel with little illustrated faces. The reference is Plutchik's wheel of emotions, suggested by the stakeholder. Limiting it to four emotions (intense, joyful, balanced, frustrated) also came from her neurolinguistics background: fewer options, more honest choices.",
+          "The first choice is an emotion, on a wheel with little illustrated faces. The reference is Plutchik's wheel of emotions, suggested by the client's curation. Limiting it to four emotions (intense, joyful, balanced, frustrated) also came from that curation, grounded in neurolinguistics: fewer options, more honest choices.",
         ],
       },
       { type: 'image', src: '/enjoy-rio/emotions.jpg', alt: 'Emotion wheel with four illustrated options', caption: 'four emotions, more honest choices.', narrow: true },
@@ -527,10 +527,10 @@ const en = [
         heading: 'Build, audit, adjust',
         body: [
           'Since the engine was built with AI assistance, I didn\'t want to rely on "looks like it works". Before putting it in front of real people, I created an **audit agent**: it simulated combinations of answers and checked whether the engine behaved the way we expected.',
-          "It found things manual testing would hardly catch: the first questions decided almost everything on their own, the emotion weighed too much, and some destinations never made it to the top. That became a report for the stakeholder, and the fixes came in a few rounds: questions reordered, a lighter weight for the emotion, revised destination profiles (two destinations removed instead of artificially tuned) and a bonus for the scenery people say they prefer.",
+          "It found things manual testing would hardly catch: the first questions decided almost everything on their own, the emotion weighed too much, and some destinations never made it to the top. That became a report for the stakeholders, and the fixes came in a few rounds: questions reordered, a lighter weight for the emotion, revised destination profiles (two destinations removed instead of artificially tuned) and a bonus for the scenery people say they prefer.",
         ],
       },
-      { type: 'image', src: '/enjoy-rio/relatorio.png', alt: 'Page of the engine audit report (in Portuguese) with the first three issues: the first answer dominates, the emotion weighs too much, and one destination never reaches first place', caption: 'part of the report that went to the stakeholder (in Portuguese).' },
+      { type: 'image', src: '/enjoy-rio/relatorio.png', alt: 'Page of the engine audit report (in Portuguese) with the first three issues: the first answer dominates, the emotion weighs too much, and one destination never reaches first place. Destinations, answers and dimensions are shown with generic names', caption: 'part of the report that went to the stakeholders (in Portuguese), with destination, answer and dimension names left out.' },
       {
         type: 'text',
         heading: 'What comes next',
@@ -561,9 +561,9 @@ const en = [
     sections: [
       {
         type: 'text',
-        heading: 'UX debt piles up quietly',
+        heading: 'A page that grew along with the platform',
         body: [
-          "Nobody designed this page to be confusing, but it went years without a design update while the platform kept shipping features the page had to hold. Each launch put its piece wherever it fit: goals here, a group notice there, one more materials button over there. A few rounds later, the most important thing on the page, **the code creators share to earn commission**, was a button lost in the middle of everything.",
+          "Nobody designed this page to be confusing, but it went years without a design update while the platform kept shipping features the page had to hold. Each launch put its piece wherever it fit: goals here, a group notice there, one more materials button over there. A few rounds later, the most important thing on the page, **the code creators share to earn commission**, kept losing room to everything that came after.",
           'Clarity made it visible: creators took a long time to generate their code on the brand page.',
         ],
       },
@@ -600,7 +600,7 @@ const en = [
         type: 'text',
         heading: 'Urgent now, definitive later',
         body: [
-          'This redesign was an urgent request: fix the problem without stopping everything else. The definitive version comes when the creators platform gets its own design system, like the B2B dashboard is getting now. Until then, the lesson is to decide upfront where each *type* of information lives, so the next feature is born in the right place.',
+          'This redesign came with a tight deadline: fix the main problem without stopping other work. The definitive version comes when the creators platform gets its own design system, like the B2B dashboard is getting now. Until then, the lesson is to decide upfront where each *type* of information lives, so the next feature is born in the right place.',
         ],
       },
     ],
