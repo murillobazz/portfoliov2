@@ -3,7 +3,6 @@ import { useLanguageContext } from '../context/LanguageContext';
 import t from '../utils/translations';
 import { PongCard } from '../components/PongCard';
 import { MindTheGap } from '../components/MindTheGap';
-import { Folder } from '../components/Folder';
 
 export function HomePage() {
   const navigate = useNavigate();
@@ -14,36 +13,37 @@ export function HomePage() {
     <div className="home">
       <p className="home-tagline">
         {tx.taglinePrefix}<MindTheGap text={tx.taglineEm} reveal={tx.taglineGap} />
+        <span className="home-tagline-facts">{tx.facts}</span>
       </p>
 
       <div className="home-grid">
         <div className="home-card home-card--work" onClick={() => navigate('/work')}>
           <span className="home-card-label">{tx.navWork}</span>
-          {/* A stack of folders, one per case: hover pulls one out with its tags */}
-          <div className="home-folders" style={{ '--n': tx.projects.length }}>
-            {tx.projects.map((project, i) => (
-              <Link
-                key={project.slug}
-                to={`/work/${project.slug}`}
-                className="home-folder"
-                style={{ '--i': i }}
-                aria-label={project.title}
-                title={project.name}
-                onClick={e => e.stopPropagation()}
-                viewTransition
-              >
-                {/* The link stays put as the hover area; only the body moves */}
-                <span className="home-folder-body">
-                  <span className="home-folder-tags" aria-hidden="true">
-                    {project.tags.map((tag, j) => (
-                      <span key={tag} className="home-folder-tag" style={{ '--j': j }}>{tag}</span>
-                    ))}
+          {/* One flat folder per case, seen from the front: the case preview
+              peeks out from behind its front, where the summary sits */}
+          <ul className="home-folders">
+            {tx.projects.map(project => (
+              <li key={project.slug}>
+                <Link
+                  to={`/work/${project.slug}`}
+                  className="home-folder"
+                  onClick={e => e.stopPropagation()}
+                  viewTransition
+                >
+                  <span className="home-folder-back" aria-hidden="true" />
+                  {project.preview && (
+                    <span className="home-folder-sheet">
+                      <img src={project.preview} alt="" decoding="async" />
+                    </span>
+                  )}
+                  <span className="home-folder-front">
+                    <span className="home-folder-name">{project.name}</span>
+                    <span className="home-folder-summary">{project.summary}</span>
                   </span>
-                  <Folder symbol={project.symbol} />
-                </span>
-              </Link>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
         <div className="home-card home-card--about" onClick={() => navigate('/about')}>
           <span className="home-card-label">{tx.navAbout}</span>

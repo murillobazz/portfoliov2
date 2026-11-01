@@ -60,10 +60,38 @@ function Paragraphs({ body }) {
   });
 }
 
+// Design tokens, in either spelling ("space/10" in the JSON, var(--space-10) in
+// the .vue), get highlighted so the two panels can be read against each other
+const TOKEN = /(var\(--[a-z0-9-]+\)|"[a-z]+(?:\/[a-z0-9]+)+")/g;
+
+function CodePanels({ section }) {
+  return (
+    <figure className="case-figure case-code">
+      <div className="case-code-panels">
+        {section.panels.map(panel => (
+          <div key={panel.file} className="case-code-panel">
+            <span className="case-code-file">{panel.file}</span>
+            <pre>
+              <code>
+                {panel.code.split(TOKEN).map((part, i) =>
+                  i % 2 ? <mark key={i}>{part}</mark> : part
+                )}
+              </code>
+            </pre>
+          </div>
+        ))}
+      </div>
+      {section.caption && <figcaption>{section.caption}</figcaption>}
+    </figure>
+  );
+}
+
 function Section({ section, tx }) {
   switch (section.type) {
     case 'image':
       return <CaseImage image={section} todoLabel={tx.caseVisualTodo} />;
+    case 'code':
+      return <CodePanels section={section} />;
     case 'callout':
       return (
         <blockquote className="case-callout">

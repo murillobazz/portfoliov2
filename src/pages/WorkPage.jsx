@@ -37,7 +37,7 @@ export function WorkPage() {
                     />
                   </span>
                 )}
-                <Folder symbol={project.symbol} className="project-folder-icon" />
+                <Folder className="project-folder-icon" />
               </div>
             </Link>
           </li>

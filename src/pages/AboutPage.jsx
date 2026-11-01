@@ -12,6 +12,7 @@ export function AboutPage() {
       {/* ── Lead bio ── */}
       <div className="about-bio">
         <span className="about-col-label">{tx.aboutLabel}</span>
+        <p className="about-facts"><RichText text={tx.aboutFacts} /></p>
         {tx.about.map((line, i) => <p key={i}><RichText text={line} /></p>)}
       </div>
 

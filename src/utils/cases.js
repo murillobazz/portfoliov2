@@ -11,6 +11,7 @@ const pt = [
     name: 'moneri design system',
     title: 'Um design system que começa no código em produção e volta para ele',
     subtitle: 'design system do dashboard b2b da moneri: do legado ao figma e de volta pro código',
+    summary: 'o design system do dashboard b2b, do figma ao código vue com plugin e gerador feitos por mim.',
     status: 'em andamento',
     tags: ['design system', 'plugin do figma', 'vue'],
     hero: {
@@ -20,7 +21,7 @@ const pt = [
     },
     tldr: [
       ['Papel', 'tudo: auditoria, design no Figma, plugin, gerador de código'],
-      ['Time', 'só eu'],
+      ['Time', 'desenvolvido por mim, pra ser aplicado pelo time de desenvolvimento'],
       ['Quando', 'set/2026 → em andamento'],
       ['Produto', 'dashboard onde as marcas parceiras (os grandes clientes B2B da Moneri) acompanham vendas, creators e comissões'],
       ['Até aqui', '20 componentes v2 · botão primário de 3,4:1 → 4,66:1 de contraste · badges de 2,2–3,4:1 → 5–7:1 · 11 tamanhos de fonte → 6 · 41 de 45 variantes geradas batendo com o Figma em até 1px'],
@@ -77,6 +78,50 @@ const pt = [
         caption: 'componentes v2 renderizados direto do código que o sync gerou.',
       },
       { type: 'image', src: '/design-system/fluxo.png', alt: 'Fluxo em quatro etapas: Gerar e Exportar no plugin do Figma, Sync no código e os componentes Vue com tokens em CSS', caption: 'do Figma ao .vue, sem redesenhar nada à mão.' },
+      {
+        type: 'code',
+        panels: [
+          { file: 'figma-export.json', code: `{
+  "name": "Status=Faturado",
+  "layout": {
+    "mode": "HORIZONTAL",
+    "padding": [4, 10, 4, 10],
+    "primary": "CENTER"
+  },
+  "fills": [
+    { "color": "#e0f2e0", "var": "feedback/success/bg" }
+  ],
+  "bound": {
+    "paddingTop": "space/4",
+    "paddingLeft": "space/10",
+    "topLeftRadius": "radius/lg"
+  },
+  "children": [{
+    "type": "TEXT",
+    "text": { "characters": "Faturado" },
+    "fills": [
+      { "color": "#3a571d", "var": "feedback/success/fg" }
+    ]
+  }]
+}` },
+          { file: 'StatusBadge.vue', code: `<!-- figma: Status=Faturado -->
+<div v-else style="
+  display: flex;
+  padding: var(--space-4) var(--space-10)
+           var(--space-4) var(--space-10);
+  justify-content: center;
+  align-items: center;
+  background-color: var(--feedback-success-bg);
+  border-radius: var(--radius-lg)">
+  <span class="ts-badge" style="
+    color: var(--feedback-success-fg);
+    white-space: nowrap">
+    Faturado
+  </span>
+</div>` },
+        ],
+        caption: 'um badge no json que o plugin exporta e no .vue que o sync gera (recortados e quebrados em linhas pra caber). os tokens marcados são os mesmos dos dois lados.',
+      },
       {
         type: 'text',
         heading: 'Decisões que o código não toma sozinho',
@@ -112,6 +157,7 @@ const pt = [
     name: 'enjoy rio',
     title: 'Transformando "como você se sente" em "para onde viajar"',
     subtitle: 'um quiz pra enjoy rio que recomenda destinos no estado do rio a partir do seu momento',
+    summary: 'um quiz que recomenda destinos a partir do seu momento. design, motor de recomendação e front, no ar.',
     status: null,
     tags: ['quiz', 'motor de recomendação', 'react'],
     link: { label: 'fazer o quiz', href: QUIZ_URL },
@@ -195,7 +241,8 @@ const pt = [
     slug: 'marcas',
     name: 'página de marcas',
     title: 'Colocando o código do creator em primeiro lugar',
-    subtitle: 'reorganizando uma página que cresceu por partes sem olhar para o todo',
+    subtitle: 'reorganizando uma página que cresceu por partes e reduzindo em ~20% os chamados de suporte',
+    summary: 'a página reorganizada pelo que o creator veio fazer: ~20% menos chamados de suporte.',
     status: null,
     tags: ['hierarquia de informação', 'mobile', 'white-label'],
     hero: {
@@ -265,6 +312,7 @@ const en = [
     name: 'moneri design system',
     title: 'A design system that starts from production code and syncs back into it',
     subtitle: "moneri's b2b dashboard design system: from legacy code to figma and back into code",
+    summary: 'the b2b dashboard design system, from figma to vue code with a plugin and generator I built.',
     status: 'in progress',
     tags: ['design system', 'figma plugin', 'vue'],
     hero: {
@@ -274,7 +322,7 @@ const en = [
     },
     tldr: [
       ['Role', 'everything: audit, Figma design, plugin, code generator'],
-      ['Team', 'just me'],
+      ['Team', 'built by me, to be rolled out by the development team'],
       ['When', 'sep/2026 → in progress'],
       ['Product', "the dashboard where partner brands (Moneri's big B2B clients) track sales, creators and commissions"],
       ['So far', '20 v2 components · primary button from 3.4:1 → 4.66:1 contrast · badges from 2.2–3.4:1 → 5–7:1 · 11 font sizes → 6 · 41 of 45 generated variants matching Figma within 1px'],
@@ -331,6 +379,50 @@ const en = [
         caption: 'v2 components rendered straight from the code the sync generated.',
       },
       { type: 'image', src: '/design-system/fluxo-en.png', alt: 'Four-step flow: Generate and Export in the Figma plugin, Sync in code, and the Vue components with CSS tokens', caption: 'from Figma to .vue, nothing redrawn by hand.' },
+      {
+        type: 'code',
+        panels: [
+          { file: 'figma-export.json', code: `{
+  "name": "Status=Faturado",
+  "layout": {
+    "mode": "HORIZONTAL",
+    "padding": [4, 10, 4, 10],
+    "primary": "CENTER"
+  },
+  "fills": [
+    { "color": "#e0f2e0", "var": "feedback/success/bg" }
+  ],
+  "bound": {
+    "paddingTop": "space/4",
+    "paddingLeft": "space/10",
+    "topLeftRadius": "radius/lg"
+  },
+  "children": [{
+    "type": "TEXT",
+    "text": { "characters": "Faturado" },
+    "fills": [
+      { "color": "#3a571d", "var": "feedback/success/fg" }
+    ]
+  }]
+}` },
+          { file: 'StatusBadge.vue', code: `<!-- figma: Status=Faturado -->
+<div v-else style="
+  display: flex;
+  padding: var(--space-4) var(--space-10)
+           var(--space-4) var(--space-10);
+  justify-content: center;
+  align-items: center;
+  background-color: var(--feedback-success-bg);
+  border-radius: var(--radius-lg)">
+  <span class="ts-badge" style="
+    color: var(--feedback-success-fg);
+    white-space: nowrap">
+    Faturado
+  </span>
+</div>` },
+        ],
+        caption: 'a badge in the json the plugin exports and in the .vue the sync generates (trimmed and wrapped to fit). the highlighted tokens are the same on both sides.',
+      },
       {
         type: 'text',
         heading: "Decisions code doesn't make on its own",
@@ -366,6 +458,7 @@ const en = [
     name: 'enjoy rio',
     title: 'Turning how you feel into where to travel',
     subtitle: 'a quiz for enjoy rio that recommends destinations in rio de janeiro state based on how you feel right now',
+    summary: 'a quiz that recommends destinations based on how you feel. design, recommendation engine and front end, live.',
     status: null,
     tags: ['quiz', 'recommendation engine', 'react'],
     link: { label: 'take the quiz (in portuguese)', href: QUIZ_URL },
@@ -449,7 +542,8 @@ const en = [
     slug: 'marcas',
     name: 'brand page',
     title: "Putting the creator's code first",
-    subtitle: 'reorganizing a page that grew piece by piece without looking at the whole',
+    subtitle: 'reorganizing a page that grew piece by piece, and cutting support tickets by ~20%',
+    summary: 'the page reorganized around what creators came to do: ~20% fewer support tickets.',
     status: null,
     tags: ['information hierarchy', 'mobile', 'white-label'],
     hero: {
@@ -513,12 +607,11 @@ const en = [
   },
 ];
 
-// Language-independent bits: the symbol on each case's folder and the
-// preview that peeks out of it on the work page
+// Language-independent bits: the preview that peeks out of each case's folder
 const META = {
-  'design-system': { symbol: 'components', preview: '/design-system/components-v2.jpg' },
-  'enjoy-rio': { symbol: 'emotion', preview: '/enjoy-rio/welcome.jpg' },
-  marcas: { symbol: 'coupon', preview: '/marcas/states.png' },
+  'design-system': { preview: '/design-system/components-v2.jpg' },
+  'enjoy-rio': { preview: '/enjoy-rio/welcome.jpg' },
+  marcas: { preview: '/marcas/states.png' },
 };
 
 const withMeta = list => list.map(c => ({ ...c, ...META[c.slug] }));
