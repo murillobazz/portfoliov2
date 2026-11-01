@@ -66,7 +66,7 @@ const pt = [
             list: [
               '**Gerar** (plugin do Figma): cria cada leva de componentes já ligada às variables. Ele só cria; nunca mexe no que eu já ajustei à mão.',
               '**Exportar** (plugin): gera um JSON com variables, estilos e a estrutura de cada componente que marquei como pronto.',
-              '**Sync** (script): lê o JSON e gera os componentes em Vue 2, com `var(--token)` em toda camada ligada a uma variable.',
+              '**Sync** (script): lê o JSON e gera os componentes em Vue, com `var(--token)` em toda camada ligada a uma variable.',
             ],
           },
         ],
@@ -78,9 +78,9 @@ const pt = [
         caption: 'componentes v2 renderizados direto do código que o sync gerou.',
       },
       { type: 'image', src: '/design-system/fluxo.png', alt: 'Fluxo em quatro etapas: Gerar e Exportar no plugin do Figma, Sync no código e os componentes Vue com tokens em CSS', caption: 'do Figma ao .vue, sem redesenhar nada à mão.' },
-      {
-        type: 'code',
-        panels: [
+      {
+        type: 'code',
+        panels: [
           { file: 'figma-export.json', code: `{
   "name": "Status=Faturado",
   "layout": {
@@ -103,7 +103,7 @@ const pt = [
       { "color": "#3a571d", "var": "feedback/success/fg" }
     ]
   }]
-}` },
+}` },
           { file: 'StatusBadge.vue', code: `<!-- figma: Status=Faturado -->
 <div v-else style="
   display: flex;
@@ -118,9 +118,9 @@ const pt = [
     white-space: nowrap">
     Faturado
   </span>
-</div>` },
-        ],
-        caption: 'um badge no json que o plugin exporta e no .vue que o sync gera (recortados e quebrados em linhas pra caber). os tokens marcados são os mesmos dos dois lados.',
+</div>` },
+        ],
+        caption: 'um badge no json que o plugin exporta e no .vue que o sync gera (recortados e quebrados em linhas pra caber). os tokens marcados são os mesmos dos dois lados.',
       },
       {
         type: 'text',
@@ -367,7 +367,7 @@ const en = [
             list: [
               '**Generate** (Figma plugin): creates each batch of components already bound to variables. It only creates; it never touches what I adjusted by hand.',
               '**Export** (plugin): outputs a JSON with variables, styles and the structure of every component I marked as ready.',
-              '**Sync** (script): reads the JSON and generates Vue 2 components, with `var(--token)` on every layer bound to a variable.',
+              '**Sync** (script): reads the JSON and generates Vue components, with `var(--token)` on every layer bound to a variable.',
             ],
           },
         ],
@@ -379,9 +379,9 @@ const en = [
         caption: 'v2 components rendered straight from the code the sync generated.',
       },
       { type: 'image', src: '/design-system/fluxo-en.png', alt: 'Four-step flow: Generate and Export in the Figma plugin, Sync in code, and the Vue components with CSS tokens', caption: 'from Figma to .vue, nothing redrawn by hand.' },
-      {
-        type: 'code',
-        panels: [
+      {
+        type: 'code',
+        panels: [
           { file: 'figma-export.json', code: `{
   "name": "Status=Faturado",
   "layout": {
@@ -404,7 +404,7 @@ const en = [
       { "color": "#3a571d", "var": "feedback/success/fg" }
     ]
   }]
-}` },
+}` },
           { file: 'StatusBadge.vue', code: `<!-- figma: Status=Faturado -->
 <div v-else style="
   display: flex;
@@ -419,9 +419,9 @@ const en = [
     white-space: nowrap">
     Faturado
   </span>
-</div>` },
-        ],
-        caption: 'a badge in the json the plugin exports and in the .vue the sync generates (trimmed and wrapped to fit). the highlighted tokens are the same on both sides.',
+</div>` },
+        ],
+        caption: 'a badge in the json the plugin exports and in the .vue the sync generates (trimmed and wrapped to fit). the highlighted tokens are the same on both sides.',
       },
       {
         type: 'text',
