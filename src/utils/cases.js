@@ -233,7 +233,10 @@ const pt = [
       {
         type: 'text',
         heading: 'E depois',
-        body: ['O próximo passo natural é ajustar o algoritmo com base no uso real e testar com viajantes se a recomendação faz sentido pra eles.'],
+        body: [
+          'O próximo passo natural é ajustar o algoritmo com base no uso real e testar com viajantes se a recomendação faz sentido pra eles.',
+          'Enquanto isso, publiquei uma versão genérica do motor e da auditoria, escrita do zero e com um catálogo fictício (receitas no lugar de destinos): [mood-engine](https://github.com/murillobazz/mood-engine). Mesma ideia, nenhum dado do cliente.',
+        ],
       },
     ],
   },
@@ -534,7 +537,10 @@ const en = [
       {
         type: 'text',
         heading: 'What comes next',
-        body: ['The natural next step is tuning the algorithm with real usage and testing with travelers whether the recommendations make sense to them.'],
+        body: [
+          'The natural next step is tuning the algorithm with real usage and testing with travelers whether the recommendations make sense to them.',
+          'Meanwhile, I published a generic version of the engine and the audit, written from scratch with a fictional catalog (recipes instead of destinations): [mood-engine](https://github.com/murillobazz/mood-engine). Same idea, none of the client\'s data.',
+        ],
       },
     ],
   },
